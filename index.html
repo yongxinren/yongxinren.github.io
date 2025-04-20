@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="我的博客">
+<meta property="og:url" content="http://yongxinren.github.com/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Yongxinren">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20241219/142700.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20241219/142700.html" class="post-title-link" itemprop="url">remember 原理与使用指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-19 14:27:00" itemprop="dateCreated datePublished" datetime="2024-12-19T14:27:00+08:00">2024-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:35" itemprop="dateModified" datetime="2025-04-20T19:46:35+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="remember-原理与使用指南"><a href="#remember-原理与使用指南" class="headerlink" title="remember 原理与使用指南"></a><code>remember</code> 原理与使用指南</h1><p><code>remember</code> 是 <strong>Jetpack Compose</strong> 中的核心函数，用于在组件的重组（Recomposition）过程中<strong>保持状态或缓存计算结果</strong>。以下是它的实现原理、核心特性和用法：</p>
+<hr>
+<h2 id="一、实现原理"><a href="#一、实现原理" class="headerlink" title="一、实现原理"></a>一、实现原理</h2><h3 id="1-编译期处理"><a href="#1-编译期处理" class="headerlink" title="1. 编译期处理"></a>1. <strong>编译期处理</strong></h3><ul>
+<li>  Compose 编译器会为 <code>@Composable</code> 函数生成特殊代码，在编译时记录 <code>remember</code> 的调用位置和依赖关系。</li>
+<li>  每个 <code>remember</code> 调用会被分配一个唯一的 <strong>记忆槽（Memory Slot）</strong>，存储在 Composition 的插槽表中。</li>
+</ul>
+<h3 id="2-运行时机制"><a href="#2-运行时机制" class="headerlink" title="2. 运行时机制"></a>2. <strong>运行时机制</strong></h3><ul>
+<li>  <strong>首次组合（Initial Composition）</strong>：执行 <code>remember</code> 的 lambda 并存储结果到插槽表。</li>
+<li>  <strong>重组期间</strong>：直接读取插槽表中存储的值，除非依赖项变化。</li>
+<li>  <strong>插槽表结构</strong>：Compose 通过树形结构的插槽表跟踪所有 <code>remember</code> 的状态，重组时根据位置信息找回对应值。</li>
+</ul>
+<h3 id="3-位置记忆（Positional-Memoization）"><a href="#3-位置记忆（Positional-Memoization）" class="headerlink" title="3. 位置记忆（Positional Memoization）"></a>3. <strong>位置记忆（Positional Memoization）</strong></h3><ul>
+<li>  Compose 通过调用位置（代码中的物理位置）区分不同的 <code>remember</code> 实例。</li>
+<li>  这也是为什么 <code>remember</code> 必须稳定地出现在相同调用位置（不能放在条件分支中动态切换）。</li>
+</ul>
+<hr>
+<h2 id="二、基本作用"><a href="#二、基本作用" class="headerlink" title="二、基本作用"></a>二、基本作用</h2><ul>
+<li>  <strong>状态持久化</strong>：在重组时保留存储的值，避免重新初始化。</li>
+<li>  <strong>性能优化</strong>：缓存计算结果，避免重复执行耗时操作。</li>
+</ul>
+<hr>
+<h2 id="三、基本语法"><a href="#三、基本语法" class="headerlink" title="三、基本语法"></a>三、基本语法</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> value = remember &#123; </span><br><span class="line">    <span class="comment">// 初始值或计算逻辑（仅在首次组合时执行）</span></span><br><span class="line">    expensiveCalculation() </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  当 Composable 重组时，<code>value</code> 会保持上一次的结果，除非依赖项变化。</li>
+</ul>
+<hr>
+<h2 id="四、与-mutableStateOf-结合"><a href="#四、与-mutableStateOf-结合" class="headerlink" title="四、与 mutableStateOf 结合"></a>四、与 <code>mutableStateOf</code> 结合</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count <span class="keyword">by</span> remember &#123; mutableStateOf(<span class="number">0</span>) &#125; <span class="comment">// 委托语法</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  当 <code>count</code> 变化时，依赖它的 Composable 会自动重组。</li>
+</ul>
+<hr>
+<h2 id="五、依赖项控制（key）"><a href="#五、依赖项控制（key）" class="headerlink" title="五、依赖项控制（key）"></a>五、依赖项控制（key）</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result = remember(key1 = dep1) &#123;</span><br><span class="line">    computeValue(dep1) <span class="comment">// dep1变化时重新计算</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、常见使用场景"><a href="#六、常见使用场景" class="headerlink" title="六、常见使用场景"></a>六、常见使用场景</h2><ol>
+<li>  <strong>状态保持</strong>：表单输入、开关状态</li>
+</ol>
+<pre><code><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text <span class="keyword">by</span> remember &#123; mutableStateOf(<span class="string">&quot;&quot;</span>) &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol>
+<li>  <strong>缓存计算</strong>：排序/过滤等耗时操作</li>
+</ol>
+<pre><code><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> sortedList = remember(list) &#123; list.sorted() &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<hr>
+<h2 id="七、与-rememberSaveable-的区别"><a href="#七、与-rememberSaveable-的区别" class="headerlink" title="七、与 rememberSaveable 的区别"></a>七、与 <code>rememberSaveable</code> 的区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>remember</code></th>
+<th><code>rememberSaveable</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>重组保持</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>配置变更保持</td>
+<td>❌</td>
+<td>✅（通过 Bundle）</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>临时状态</td>
+<td>需要持久化的状态</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="八、注意事项"><a href="#八、注意事项" class="headerlink" title="八、注意事项"></a>八、注意事项</h2><ol>
+<li>  <strong>位置稳定性</strong>：避免将 <code>remember</code> 放在条件分支中。</li>
+</ol>
+<pre><code><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误用法！可能导致状态丢失</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="keyword">val</span> x = remember &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol>
+<li>  <strong>内存管理</strong>：未使用的 <code>remember</code> 值会在离开 Composition 时自动清除。</li>
+</ol>
+<hr>
+<h2 id="完整示例"><a href="#完整示例" class="headerlink" title="完整示例"></a>完整示例</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Composable</span> </span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">Counter</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 原理：值存储在插槽表第0位置</span></span><br><span class="line">    <span class="keyword">var</span> count <span class="keyword">by</span> remember &#123; </span><br><span class="line">        mutableStateOf(<span class="number">0</span>) <span class="comment">// 首次组合初始化</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 原理：值存储在插槽表第1位置</span></span><br><span class="line">    <span class="keyword">val</span> square = remember(count) &#123; </span><br><span class="line">        count * count <span class="comment">// count变化时重新计算</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Button(onClick = &#123; count++ &#125;) &#123;</span><br><span class="line">        Text(<span class="string">&quot;<span class="variable">$count</span>² = <span class="variable">$square</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过理解 <code>remember</code> 的插槽表机制和位置记忆原理，可以更精准地控制 Composable 的状态生命周期。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20241011/085600.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20241011/085600.html" class="post-title-link" itemprop="url">一文弄懂 repeatOnLifecycle</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-10-11 08:56:00" itemprop="dateCreated datePublished" datetime="2024-10-11T08:56:00+08:00">2024-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:31" itemprop="dateModified" datetime="2025-04-20T19:46:31+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>repeatOnLifecycle</code> 是 Android Jetpack 生命周期组件库中的一个实用扩展函数，主要用于在 <code>LifecycleOwner</code>（如 <code>Activity</code> 或 <code>Fragment</code>）的生命周期状态变化时自动启动和取消协程任务。它结合了 Kotlin 协程和生命周期感知能力，帮助开发者避免内存泄漏和无效的资源消耗。</p>
+<hr>
+<h3 id="​核心功能​"><a href="#​核心功能​" class="headerlink" title="​核心功能​"></a>​<strong>核心功能</strong>​</h3><ol>
+<li>​<strong>自动启停协程</strong>​<br> 当 <code>Lifecycle</code> 进入或退出指定状态（如 <code>STARTED</code> 或 <code>RESUMED</code>）时，自动启动或取消协程块内的任务。</li>
+<li>​<strong>避免内存泄漏</strong>​<br> 协程会在 <code>Lifecycle</code> 销毁时自动取消，无需手动管理。</li>
+<li>​<strong>简化代码</strong>​<br> 替代传统的 <code>lifecycle.addObserver</code> 手动监听，减少模板代码。</li>
+</ol>
+<hr>
+<h3 id="​使用场景​"><a href="#​使用场景​" class="headerlink" title="​使用场景​"></a>​<strong>使用场景</strong>​</h3><ul>
+<li>  在 <code>Activity/Fragment</code> 可见时（<code>STARTED</code>）开始数据加载，不可见时停止。</li>
+<li>  替代 <code>LiveData</code> 的协程版本（如结合 <code>Flow</code> 使用）。</li>
+</ul>
+<hr>
+<h3 id="​基本用法​"><a href="#​基本用法​" class="headerlink" title="​基本用法​"></a>​<strong>基本用法</strong>​</h3><h4 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h4><p>确保项目中已引入 <code>lifecycle-runtime-ktx</code>：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&quot;androidx.lifecycle:lifecycle-runtime-ktx:2.6.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2. 示例代码"></a>2. 示例代码</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        </span><br><span class="line">        lifecycleScope.launch &#123;</span><br><span class="line">            repeatOnLifecycle(Lifecycle.State.STARTED) &#123;</span><br><span class="line">                <span class="comment">// 当 Activity 进入 STARTED 状态时启动协程</span></span><br><span class="line">                someFlow.collect &#123; <span class="keyword">data</span> -&gt;</span><br><span class="line">                    updateUI(<span class="keyword">data</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 当 Activity 进入 STOPPED 状态时自动取消协程</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="​关键参数​"><a href="#​关键参数​" class="headerlink" title="​关键参数​"></a>​<strong>关键参数</strong>​</h3><ul>
+<li><p>​<code>state</code>​<br>  指定触发协程的生命周期状态（通常为 <code>STARTED</code> 或 <code>RESUMED</code>）：</p>
+<ul>
+<li>  <code>STARTED</code>：界面可见但可能未获取焦点（适合大多数场景）。</li>
+<li>  <code>RESUMED</code>：界面完全可见且可交互（需要严格实时性的场景）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="​与-launchWhenX-的区别​"><a href="#​与-launchWhenX-的区别​" class="headerlink" title="​与 launchWhenX 的区别​"></a>​<strong>与 <code>launchWhenX</code> 的区别</strong>​</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>repeatOnLifecycle</code></th>
+<th><code>launchWhenStarted</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>​<strong>协程取消时机</strong>​</td>
+<td>生命周期离开指定状态时取消</td>
+<td>仅在生命周期销毁时取消</td>
+</tr>
+<tr>
+<td>​<strong>资源效率</strong>​</td>
+<td>更高（及时取消）</td>
+<td>较低（可能后台运行）</td>
+</tr>
+<tr>
+<td>​<strong>推荐场景</strong>​</td>
+<td>数据流（如 <code>Flow</code>）收集</td>
+<td>简单的一次性任务</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>​<strong>官方推荐</strong>​：对于 <code>Flow</code> 收集，优先使用 <code>repeatOnLifecycle</code>。</p>
+</blockquote>
+<hr>
+<h3 id="​结合-Flow-使用​"><a href="#​结合-Flow-使用​" class="headerlink" title="​结合 Flow 使用​"></a>​<strong>结合 Flow 使用</strong>​</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lifecycleScope.launch &#123;</span><br><span class="line">    repeatOnLifecycle(Lifecycle.State.STARTED) &#123;</span><br><span class="line">        viewModel.dataFlow</span><br><span class="line">            .<span class="keyword">catch</span> &#123; <span class="comment">/* 异常处理 */</span> &#125;</span><br><span class="line">            .collect &#123; <span class="keyword">data</span> -&gt; updateUI(<span class="keyword">data</span>) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="​注意事项​"><a href="#​注意事项​" class="headerlink" title="​注意事项​"></a>​<strong>注意事项</strong>​</h3><ol>
+<li>​<strong>协程作用域</strong>​<br> 需在 <code>lifecycleScope</code> 或 <code>viewModelScope</code> 中调用，确保协程与生命周期绑定。</li>
+<li>​<strong>状态选择</strong>​<br> 根据需求选择 <code>STARTED</code> 或 <code>RESUMED</code>，避免过度频繁启停。</li>
+<li>​<strong>替代方案</strong>​<br> 对于 <code>Compose</code>，可使用 <code>collectAsStateWithLifecycle</code>。</li>
+</ol>
+<hr>
+<p>通过 <code>repeatOnLifecycle</code>，开发者可以更安全、高效地管理协程任务的生命周期，尤其适合需要响应式数据更新的场景。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20240823/170800.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20240823/170800.html" class="post-title-link" itemprop="url">Jetpack Compose 中绘制自定义图形</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-08-23 17:08:00" itemprop="dateCreated datePublished" datetime="2024-08-23T17:08:00+08:00">2024-08-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:26" itemprop="dateModified" datetime="2025-04-20T19:46:26+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>好的，要在 Jetpack Compose 中绘制自定义图形，最核心的方式是使用 <code>Canvas</code> 可组合项 (Composable)。<code>Canvas</code> 提供了一个二维绘图环境，你可以在其中使用各种绘制命令来创建你想要的任何视觉效果。</p>
+<p>以下是如何在 Compose 中进行自定义绘制的步骤和关键概念：</p>
+<p><strong>1. 使用 <code>Canvas</code> Composable:</strong></p>
+<p>   <code>Canvas</code> 是一个 Composable 函数，它接收一个 <code>modifier</code> 来定义其尺寸（非常重要，否则画布没有大小），以及一个 <code>onDraw</code> lambda 函数。所有的绘制操作都在这个 <code>onDraw</code> lambda 的 <code>DrawScope</code> 上下文中执行。</p>
+   <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.foundation.Canvas</span><br><span class="line"><span class="keyword">import</span> androidx.compose.foundation.layout.fillMaxSize</span><br><span class="line"><span class="keyword">import</span> androidx.compose.runtime.Composable</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.Modifier</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Color <span class="comment">// 导入 Color</span></span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.drawscope.DrawScope <span class="comment">// 导入 DrawScope</span></span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.tooling.preview.Preview</span><br><span class="line"></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">MyCustomDrawing</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Canvas(</span><br><span class="line">        modifier = Modifier.fillMaxSize() <span class="comment">// 给 Canvas 指定大小，这里填满父布局</span></span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// 所有的绘制代码都写在这里</span></span><br><span class="line">        <span class="comment">// &#x27;this&#x27; 指向 DrawScope</span></span><br><span class="line">        drawRect(color = Color.Blue) <span class="comment">// 示例：绘制一个填满画布的蓝色矩形</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Preview(showBackground = true)</span></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">PreviewMyCustomDrawing</span><span class="params">()</span></span> &#123;</span><br><span class="line">    MyCustomDrawing()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 理解 <code>DrawScope</code>:</strong></p>
+<p>   <code>onDraw</code> lambda 的接收者类型是 <code>DrawScope</code>。它提供了：</p>
+<ul>
+<li>  <strong>绘图函数:</strong> 如 <code>drawLine</code>, <code>drawRect</code>, <code>drawCircle</code>, <code>drawOval</code>, <code>drawArc</code>, <code>drawPath</code>, <code>drawImage</code>, <code>drawText</code> 等。</li>
+<li>  <strong>画布信息:</strong> 最重要的是 <code>size</code> 属性，它是一个 <code>Size</code> 对象，包含画布的 <code>width</code> 和 <code>height</code>。你可以基于这个 <code>size</code> 来进行相对定位和尺寸计算。</li>
+<li>  <strong>变换操作:</strong> 如 <code>translate</code>, <code>rotate</code>, <code>scale</code>, <code>inset</code> 等，可以改变绘制坐标系。</li>
+</ul>
+<p><strong>3. 常用的绘制函数 (<code>DrawScope</code> 内):</strong></p>
+<ul>
+<li><strong>绘制线条:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">drawLine(</span><br><span class="line">    color = Color.Red,</span><br><span class="line">    start = Offset(x = <span class="number">0f</span>, y = <span class="number">0f</span>), <span class="comment">// 起点坐标 (x, y)</span></span><br><span class="line">    end = Offset(x = size.width, y = size.height), <span class="comment">// 终点坐标</span></span><br><span class="line">    strokeWidth = <span class="number">5f</span> <span class="comment">// 线条宽度</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制矩形:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">drawRect(</span><br><span class="line">    color = Color.Green,</span><br><span class="line">    topLeft = Offset(x = size.width / <span class="number">4</span>, y = size.height / <span class="number">4</span>), <span class="comment">// 左上角坐标</span></span><br><span class="line">    size = Size(width = size.width / <span class="number">2</span>, height = size.height / <span class="number">2</span>) <span class="comment">// 矩形尺寸</span></span><br><span class="line">    <span class="comment">// style = Fill // 默认是填充 (Fill)</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// 绘制描边矩形</span></span><br><span class="line">drawRect(</span><br><span class="line">    color = Color.Black,</span><br><span class="line">    topLeft = Offset(x = <span class="number">10f</span>, y = <span class="number">10f</span>),</span><br><span class="line">    size = Size(width = <span class="number">100f</span>, height = <span class="number">50f</span>),</span><br><span class="line">    style = androidx.compose.ui.graphics.drawscope.Stroke(width = <span class="number">3f</span>) <span class="comment">// 使用 Stroke 进行描边</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制圆形:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">drawCircle(</span><br><span class="line">    color = Color.Magenta,</span><br><span class="line">    radius = size.minDimension / <span class="number">4</span>, <span class="comment">// 半径，取宽高最小值的一半</span></span><br><span class="line">    center = center <span class="comment">// center 是 DrawScope 提供的画布中心 Offset</span></span><br><span class="line">    <span class="comment">// style = Fill // 默认填充</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制椭圆:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">drawOval(</span><br><span class="line">    color = Color.Yellow,</span><br><span class="line">    topLeft = Offset(x = <span class="number">50f</span>, y = <span class="number">200f</span>),</span><br><span class="line">    size = Size(width = <span class="number">200f</span>, height = <span class="number">100f</span>) <span class="comment">// 定义椭圆的外切矩形</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制圆弧:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">drawArc(</span><br><span class="line">    color = Color.Cyan,</span><br><span class="line">    startAngle = <span class="number">0f</span>,       <span class="comment">// 起始角度 (0度是3点钟方向)</span></span><br><span class="line">    sweepAngle = <span class="number">180f</span>,     <span class="comment">// 扫过的角度 (顺时针)</span></span><br><span class="line">    useCenter = <span class="literal">true</span>,      <span class="comment">// 是否连接到圆心，形成扇形 (true) 或弓形 (false)</span></span><br><span class="line">    topLeft = Offset(x = size.width * <span class="number">0.1f</span>, y = size.height * <span class="number">0.6f</span>),</span><br><span class="line">    size = Size(width = size.width * <span class="number">0.8f</span>, height = size.width * <span class="number">0.8f</span>) <span class="comment">// 圆弧所在椭圆的外切矩形</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>4. 使用 <code>Path</code> 绘制复杂图形:</strong></p>
+<p>   对于不规则或复杂的形状，使用 <code>Path</code>。<code>Path</code> 对象允许你定义一系列的线段、曲线等来构建形状。</p>
+   <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Path</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 在 Canvas 的 onDraw 中 ...</span></span><br><span class="line"><span class="keyword">val</span> path = Path().apply &#123;</span><br><span class="line">    moveTo(x = size.width / <span class="number">2</span>, y = <span class="number">0f</span>) <span class="comment">// 移动到起点</span></span><br><span class="line">    lineTo(x = size.width, y = size.height / <span class="number">2</span>) <span class="comment">// 画线到...</span></span><br><span class="line">    lineTo(x = size.width / <span class="number">2</span>, y = size.height)</span><br><span class="line">    lineTo(x = <span class="number">0f</span>, y = size.height / <span class="number">2</span>)</span><br><span class="line">    close() <span class="comment">// 闭合路径 (连接起点和终点)</span></span><br><span class="line">&#125;</span><br><span class="line">drawPath(</span><br><span class="line">    path = path,</span><br><span class="line">    color = Color.DarkGray</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>   <code>Path</code> 支持 <code>moveTo</code>, <code>lineTo</code>, <code>quadraticBezierTo</code> (二次贝塞尔曲线), <code>cubicTo</code> (三次贝塞尔曲线), <code>addRect</code>, <code>addOval</code> 等多种命令。</p>
+<p><strong>5. 使用 <code>Brush</code> (画笔) 实现渐变等效果:</strong></p>
+<p>   除了纯色 (<code>Color</code>)，你还可以使用 <code>Brush</code> 来填充或描边，创建渐变效果。</p>
+   <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Brush</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 在 Canvas 的 onDraw 中 ...</span></span><br><span class="line"><span class="keyword">val</span> gradientBrush = Brush.linearGradient(</span><br><span class="line">    colors = listOf(Color.Red, Color.Blue),</span><br><span class="line">    start = Offset.Zero, <span class="comment">// 渐变起始点</span></span><br><span class="line">    end = Offset(x = size.width, y = size.height) <span class="comment">// 渐变结束点</span></span><br><span class="line">)</span><br><span class="line">drawCircle(</span><br><span class="line">    brush = gradientBrush, <span class="comment">// 使用画笔代替纯色</span></span><br><span class="line">    radius = size.minDimension / <span class="number">3</span>,</span><br><span class="line">    center = center</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> radialBrush = Brush.radialGradient(</span><br><span class="line">    colors = listOf(Color.Yellow, Color.Transparent),</span><br><span class="line">    center = center,</span><br><span class="line">    radius = size.minDimension / <span class="number">5</span></span><br><span class="line">)</span><br><span class="line">drawRect(brush = radialBrush)</span><br></pre></td></tr></table></figure>
+<p>   还有 <code>Brush.radialGradient</code> (径向渐变) 和 <code>Brush.sweepGradient</code> (扫描渐变)。</p>
+<p><strong>6. 结合状态和交互:</strong></p>
+<ul>
+<li>  <strong>响应状态变化:</strong> 如果你的绘图依赖于某些状态（例如，滑块位置、按钮点击次数），将这些状态用 <code>remember &#123; mutableStateOf(...) &#125;</code> 或通过 ViewModel 管理。当状态改变时，Compose 会触发重组 (recomposition)，<code>Canvas</code> 的 <code>onDraw</code> 会重新执行，使用新的状态值进行绘制。</li>
+<li>  <strong>添加交互:</strong> 你可以在 <code>Canvas</code> 上应用 <code>Modifier.pointerInput</code> 来检测触摸事件（点击、拖动等），然后更新状态，从而动态地改变绘制内容。</li>
+</ul>
+<p><strong>示例：绘制一个简单的同心圆</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.foundation.Canvas</span><br><span class="line"><span class="keyword">import</span> androidx.compose.foundation.layout.size</span><br><span class="line"><span class="keyword">import</span> androidx.compose.runtime.Composable</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.Modifier</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.geometry.Offset</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Color</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.drawscope.Stroke</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.tooling.preview.Preview</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.unit.dp</span><br><span class="line"></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">ConcentricCircles</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Canvas(modifier = Modifier.size(<span class="number">200.</span>dp)) &#123; <span class="comment">// 固定大小的 Canvas</span></span><br><span class="line">        <span class="keyword">val</span> canvasWidth = size.width</span><br><span class="line">        <span class="keyword">val</span> canvasHeight = size.height</span><br><span class="line">        <span class="keyword">val</span> center = Offset(x = canvasWidth / <span class="number">2</span>, y = canvasHeight / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">val</span> strokeWidth = <span class="number">10f</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 外圆 (红色描边)</span></span><br><span class="line">        drawCircle(</span><br><span class="line">            color = Color.Red,</span><br><span class="line">            center = center,</span><br><span class="line">            radius = size.minDimension / <span class="number">2</span> - strokeWidth / <span class="number">2</span>, <span class="comment">// 考虑描边宽度</span></span><br><span class="line">            style = Stroke(width = strokeWidth)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 中圆 (蓝色描边)</span></span><br><span class="line">        drawCircle(</span><br><span class="line">            color = Color.Blue,</span><br><span class="line">            center = center,</span><br><span class="line">            radius = size.minDimension / <span class="number">3</span> - strokeWidth / <span class="number">2</span>,</span><br><span class="line">            style = Stroke(width = strokeWidth)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 内圆 (绿色填充)</span></span><br><span class="line">        drawCircle(</span><br><span class="line">            color = Color.Green,</span><br><span class="line">            center = center,</span><br><span class="line">            radius = size.minDimension / <span class="number">6</span></span><br><span class="line">            <span class="comment">// style = Fill // 默认填充</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Preview(showBackground = true)</span></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">PreviewConcentricCircles</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ConcentricCircles()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong></p>
+<p>使用 <code>Canvas</code> 可组合项是 Jetpack Compose 中进行自定义图形绘制的主要方式。通过理解 <code>DrawScope</code> 提供的绘图函数、画布信息以及结合 <code>Path</code> 和 <code>Brush</code>，你可以创建出丰富多样的自定义视觉效果。记住，始终要为 <code>Canvas</code> 提供一个 <code>Modifier</code> 来确定其尺寸。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20240607/114500.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20240607/114500.html" class="post-title-link" itemprop="url">Android WorkManager 简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-06-07 11:45:00" itemprop="dateCreated datePublished" datetime="2024-06-07T11:45:00+08:00">2024-06-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:23" itemprop="dateModified" datetime="2025-04-20T19:46:23+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>WorkManager 是 Android Jetpack 组件之一，用于管理后台任务调度。它提供了一种灵活且兼容的方式来安排可延迟的异步任务，即使应用退出或设备重启也能保证任务执行。</p>
+<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><p>要在您的项目中使用 WorkManager，请将以下依赖项添加到您的应用或模块的 <code>build.gradle</code> (或 <code>build.gradle.kts</code>) 文件中：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="comment">// 请将 &quot;...&quot; 替换为最新的稳定版本号, 例如 &quot;2.9.0&quot;</span></span><br><span class="line">    <span class="keyword">def</span> work_version = <span class="string">&quot;...&quot;</span> </span><br><span class="line">    <span class="comment">// Kotlin + Coroutines (推荐)</span></span><br><span class="line">    implementation(<span class="string">&quot;androidx.work:work-runtime-ktx:$work_version&quot;</span>)</span><br><span class="line">    <span class="comment">// Java (如果您不使用 Kotlin)</span></span><br><span class="line">    <span class="comment">// implementation(&quot;androidx.work:work-runtime:$work_version&quot;)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>您可以在 <a target="_blank" rel="noopener" href="https://developer.android.com/jetpack/androidx/releases/work">Android 开发者官方文档</a> 找到最新的版本号。</p>
+<h2 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h2><ol>
+<li> ​<strong>向后兼容</strong>​：自动选择适合设备 Android 版本的实现方式（JobScheduler、AlarmManager 或 BroadcastReceiver）</li>
+<li> ​<strong>保证执行</strong>​：即使应用退出或设备重启，任务也会被执行</li>
+<li> ​<strong>灵活调度</strong>​：支持一次性任务和周期性任务</li>
+<li> ​<strong>约束条件</strong>​：可以设置任务执行的条件（如网络状态、充电状态等）</li>
+<li> ​<strong>链式任务</strong>​：支持任务链和并行任务</li>
+</ol>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><ul>
+<li><p>  ​<strong>Worker</strong>​：定义要执行的任务，继承自 <code>Worker</code> 类并实现 <code>doWork()</code> 方法</p>
+</li>
+<li><p>​<strong>WorkRequest</strong>​：表示任务的请求，分为：</p>
+<ul>
+<li>  <code>OneTimeWorkRequest</code>：一次性任务</li>
+<li>  <code>PeriodicWorkRequest</code>：周期性任务</li>
+</ul>
+</li>
+<li><p>  ​<strong>WorkManager</strong>​：管理任务队列并调度任务</p>
+</li>
+<li><p>  ​<strong>WorkInfo</strong>​：包含任务状态和进度的信息</p>
+</li>
+</ul>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="1-定义-Worker"><a href="#1-定义-Worker" class="headerlink" title="1. 定义 Worker"></a>1. 定义 Worker</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyWorker</span> <span class="keyword">extends</span> <span class="title">Worker</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyWorker</span><span class="params">(<span class="meta">@NonNull</span> Context context, <span class="meta">@NonNull</span> WorkerParameters params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">doWork</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 执行后台任务</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(); <span class="comment">// 或 Result.failure()/Result.retry()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-创建-WorkRequest"><a href="#2-创建-WorkRequest" class="headerlink" title="2. 创建 WorkRequest"></a>2. 创建 WorkRequest</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一次性任务</span></span><br><span class="line">OneTimeWorkRequest myWorkRequest = <span class="keyword">new</span> OneTimeWorkRequest.Builder(MyWorker.class)</span><br><span class="line">        .setConstraints(<span class="keyword">new</span> Constraints.Builder()</span><br><span class="line">                .setRequiredNetworkType(NetworkType.CONNECTED)</span><br><span class="line">                .build())</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 周期性任务（最小间隔15分钟）</span></span><br><span class="line">PeriodicWorkRequest periodicWorkRequest =</span><br><span class="line">        <span class="keyword">new</span> PeriodicWorkRequest.Builder(MyWorker.class, <span class="number">15</span>, TimeUnit.MINUTES)</span><br><span class="line">                .build();</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-提交任务"><a href="#3-提交任务" class="headerlink" title="3. 提交任务"></a>3. 提交任务</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(context).enqueue(myWorkRequest);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-观察任务状态"><a href="#4-观察任务状态" class="headerlink" title="4. 观察任务状态"></a>4. 观察任务状态</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(context)</span><br><span class="line">        .getWorkInfoByIdLiveData(myWorkRequest.getId())</span><br><span class="line">        .observe(lifecycleOwner, workInfo -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (workInfo != <span class="keyword">null</span> &amp;&amp; workInfo.getState() == WorkInfo.State.SUCCEEDED) &#123;</span><br><span class="line">                <span class="comment">// 任务完成</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ol>
+<li> ​<strong>输入/输出数据</strong>​：可以通过 <code>Data</code> 类传递数据</li>
+<li> ​<strong>任务链</strong>​：使用 <code>beginWith()</code> 和 <code>then()</code> 方法创建顺序任务链</li>
+<li> ​<strong>唯一工作序列</strong>​：使用 <code>enqueueUniqueWork()</code> 确保同一时间只有一个特定任务在运行</li>
+<li> ​<strong>任务取消</strong>​：可以通过 ID 或标签取消任务</li>
+</ol>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ul>
+<li>  需要可靠执行的后台任务（如日志上传、数据同步）</li>
+<li>  需要满足特定条件才执行的任务（如仅在充电时备份数据）</li>
+<li>  需要延迟执行的任务</li>
+<li>  需要周期性执行的任务</li>
+</ul>
+<p>WorkManager 是处理后台任务的推荐解决方案，特别适合那些不需要立即执行但必须最终完成的任务。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20240418/152100.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20240418/152100.html" class="post-title-link" itemprop="url">Android Jetpack 面试题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-18 15:21:00" itemprop="dateCreated datePublished" datetime="2024-04-18T15:21:00+08:00">2024-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:18" itemprop="dateModified" datetime="2025-04-20T19:46:18+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>以下面试题覆盖了Jetpack核心组件的原理、优化及实际应用场景，适合中高级Android开发者面试准备。</p>
+<hr>
+<h3 id="1-​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​"><a href="#1-​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​" class="headerlink" title="1. ​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​"></a>1. ​<strong>Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​</strong>​</h3><p>Navigation组件通过<strong>导航图</strong>可视化管理Fragment跳转，优势包括：</p>
+<ul>
+<li>  类型安全的参数传递（SafeArgs插件）</li>
+<li>自动处理返回栈，避免传统<code>FragmentTransaction</code>的混乱。<br>  ​<strong>解决页面重叠</strong>​：确保转场动画使用<code>setEnterAnimations</code>，并通过<code>NavController.clearBackStack()</code>清理无效栈。</li>
+</ul>
+<hr>
+<h3 id="2-​ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​​"><a href="#2-​ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​​" class="headerlink" title="2. ​ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​​"></a>2. ​<strong>ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​</strong>​</h3><p>ViewModel通过<code>ViewModelStore</code>（由<code>HolderFragment</code>持有）在Activity重建时保留数据。源码中：</p>
+<ul>
+<li>  <code>Activity#onRetainNonConfigurationInstance()</code>保存<code>ViewModelStore</code></li>
+<li>  <code>HolderFragment</code>通过<code>getViewModelStore()</code>恢复数据。</li>
+</ul>
+<hr>
+<h3 id="3-​LiveData的”粘性事件”是什么？如何避免？​​"><a href="#3-​LiveData的”粘性事件”是什么？如何避免？​​" class="headerlink" title="3. ​LiveData的”粘性事件”是什么？如何避免？​​"></a>3. ​<strong>LiveData的”粘性事件”是什么？如何避免？​</strong>​</h3><p>粘性事件指新Observer注册时收到最后一次数据（<code>mVersion</code>计数触发）。解决方案：</p>
+<ul>
+<li>  使用<code>SingleLiveEvent</code>封装，通过<code>AtomicBoolean</code>标记消费状态。</li>
+<li>  或改用Kotlin Flow替代。</li>
+</ul>
+<hr>
+<h3 id="4-​Room数据库如何优化多表查询性能？​​"><a href="#4-​Room数据库如何优化多表查询性能？​​" class="headerlink" title="4. ​Room数据库如何优化多表查询性能？​​"></a>4. ​<strong>Room数据库如何优化多表查询性能？​</strong>​</h3><ul>
+<li>  使用<code>@Transaction</code>包裹多表操作，避免数据不一致。</li>
+<li>  异步查询：返回<code>Flow&lt;List&lt;T&gt;&gt;</code>或<code>suspend</code>函数（协程）。</li>
+<li>  索引优化：对高频查询字段添加<code>@Index</code>。</li>
+</ul>
+<hr>
+<h3 id="5-​WorkManager与JobScheduler-AlarmManager的区别？如何实现任务链？​​"><a href="#5-​WorkManager与JobScheduler-AlarmManager的区别？如何实现任务链？​​" class="headerlink" title="5. ​WorkManager与JobScheduler/AlarmManager的区别？如何实现任务链？​​"></a>5. ​<strong>WorkManager与JobScheduler/AlarmManager的区别？如何实现任务链？​</strong>​</h3><ul>
+<li><p>  ​<strong>区别</strong>​：WorkManager兼容API 14+，内部按系统版本选择<code>JobScheduler</code>或<code>AlarmManager</code>，支持约束条件（如网络状态）。</p>
+</li>
+<li><p>​<strong>任务链</strong>​：通过<code>WorkContinuation</code>串联<code>OneTimeWorkRequest</code>，例如：</p>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance()</span><br><span class="line">  .beginWith(workA)</span><br><span class="line">  .then(workB)</span><br><span class="line">  .enqueue()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="6-​DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​​"><a href="#6-​DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​​" class="headerlink" title="6. ​DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​​"></a>6. ​<strong>DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​</strong>​</h3><ul>
+<li><p>  ​<strong>内存泄漏</strong>​：在<code>onDestroy</code>中调用<code>binding.unbind()</code>。</p>
+</li>
+<li><p>​<strong>表达式优化</strong>​：</p>
+<ul>
+<li>  使用<code>@BindingAdapter</code>替换复杂逻辑（如<code>Glide</code>加载图片）</li>
+<li>  避免在XML中写计算逻辑，改用静态方法。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="7-​Paging-3-0如何实现预加载？与RecyclerView如何配合？​​"><a href="#7-​Paging-3-0如何实现预加载？与RecyclerView如何配合？​​" class="headerlink" title="7. ​Paging 3.0如何实现预加载？与RecyclerView如何配合？​​"></a>7. ​<strong>Paging 3.0如何实现预加载？与RecyclerView如何配合？​</strong>​</h3><ul>
+<li>  ​<strong>预加载</strong>​：通过<code>PagingConfig</code>设置<code>prefetchDistance</code>（如提前加载20项）。</li>
+<li>  ​<strong>配合RecyclerView</strong>​：使用<code>PagingDataAdapter</code>，内部自动处理分页和DiffUtil。</li>
+</ul>
+<hr>
+<h3 id="8-​Hilt依赖注入相比Dagger2有哪些简化？​​"><a href="#8-​Hilt依赖注入相比Dagger2有哪些简化？​​" class="headerlink" title="8. ​Hilt依赖注入相比Dagger2有哪些简化？​​"></a>8. ​<strong>Hilt依赖注入相比Dagger2有哪些简化？​</strong>​</h3><ul>
+<li>  自动生成组件（如<code>@AndroidEntryPoint</code>替代<code>@Component</code>）</li>
+<li>  内置ViewModel注入：<code>@HiltViewModel</code></li>
+<li>  减少模板代码：无需手动编写<code>Module</code>和<code>Component</code>。</li>
+</ul>
+<hr>
+<h3 id="9-​Compose重组优化的四大法则是什么？​​"><a href="#9-​Compose重组优化的四大法则是什么？​​" class="headerlink" title="9. ​Compose重组优化的四大法则是什么？​​"></a>9. ​<strong>Compose重组优化的四大法则是什么？​</strong>​</h3><ol>
+<li> ​<strong>层级扁平化</strong>​：减少嵌套布局的<code>Modifier</code>链（每层增加0.8ms测量耗时）</li>
+<li> ​<strong>状态隔离</strong>​：用<code>@Stable</code>标记不可变数据类</li>
+<li> ​<strong>延迟加载</strong>​：<code>LazyLayout</code>预加载机制</li>
+<li> ​<strong>智能缓存</strong>​：<code>rememberSaveable</code>保存状态。</li>
+</ol>
+<hr>
+<h3 id="10-​如何设计跨进程的LiveData事件总线？​​"><a href="#10-​如何设计跨进程的LiveData事件总线？​​" class="headerlink" title="10. ​如何设计跨进程的LiveData事件总线？​​"></a>10. ​<strong>如何设计跨进程的LiveData事件总线？​</strong>​</h3><p>结合<code>MMKV</code>或<code>ContentProvider</code>实现跨进程通信：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProcessAwareLiveData</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> mmkv: MMKV) : LiveData&lt;T&gt;() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActive</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mmkv.registerOnSharedPreferenceChangeListener &#123; _, key -&gt; </span><br><span class="line">            postValue(mmkv.decode(key)) </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：需处理多进程写入的线程同步问题（如分段锁）。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20240213/093200.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20240213/093200.html" class="post-title-link" itemprop="url">Android Jetpack 重要知识点梳理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-13 09:32:00" itemprop="dateCreated datePublished" datetime="2024-02-13T09:32:00+08:00">2024-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:43" itemprop="dateModified" datetime="2025-04-20T19:46:43+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Android-Jetpack-重要知识点梳理"><a href="#Android-Jetpack-重要知识点梳理" class="headerlink" title="Android Jetpack 重要知识点梳理"></a>Android Jetpack 重要知识点梳理</h1><p>Android Jetpack 是一套库、工具和指南，旨在帮助开发者更轻松地构建出色的 Android 应用。它解决了诸如管理 Activity 生命周期、处理配置更改、后台任务调度等常见问题。掌握 Jetpack 的核心组件对于现代 Android 开发至关重要。以下是 Jetpack 中一些最重要知识点的梳理，按其在现代开发中的重要性和普遍性排序：</p>
+<h2 id="1-Lifecycle-生命周期"><a href="#1-Lifecycle-生命周期" class="headerlink" title="1. Lifecycle (生命周期)"></a>1. Lifecycle (生命周期)</h2><p><strong>核心概念:</strong> <code>Lifecycle</code> 组件是 Jetpack 架构组件的基础，它允许其他组件（如 <code>ViewModel</code> 和 <code>LiveData</code>）感知并响应 Activity 或 Fragment 的生命周期状态变化。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>避免内存泄漏:</strong> 组件可以在宿主生命周期结束时自动清理资源。</li>
+<li>  <strong>防止崩溃:</strong> 避免在 Activity/Fragment 停止后执行 UI 更新或其他操作。</li>
+<li>  <strong>简化代码:</strong> 将生命周期管理逻辑从 Activity/Fragment 中解耦出来。</li>
+<li>  <strong>是 ViewModel 和 LiveData/Flow 的基础。</strong></li>
+</ul>
+<h2 id="2-ViewModel-视图模型"><a href="#2-ViewModel-视图模型" class="headerlink" title="2. ViewModel (视图模型)"></a>2. ViewModel (视图模型)</h2><p><strong>核心概念:</strong> <code>ViewModel</code> 用于存储和管理与 UI 相关的数据，并能在配置更改（如屏幕旋转）后存活下来。它遵循关注点分离原则，将数据处理逻辑与 UI 控制器（Activity/Fragment）分开。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>数据持久性:</strong> 在配置更改期间保持 UI 状态，提升用户体验。</li>
+<li>  <strong>关注点分离:</strong> 使 Activity/Fragment 专注于 UI 绘制和用户交互，ViewModel 负责准备数据。</li>
+<li>  <strong>生命周期感知:</strong> 通常与 <code>Lifecycle</code> 结合使用，其生命周期比创建它的 Activity/Fragment 更长。</li>
+<li>  <strong>易于测试:</strong> ViewModel 不包含对 Android UI 或 Framework 的直接引用，方便进行单元测试。</li>
+</ul>
+<h2 id="3-LiveData-Kotlin-Flow-StateFlow-SharedFlow"><a href="#3-LiveData-Kotlin-Flow-StateFlow-SharedFlow" class="headerlink" title="3. LiveData / Kotlin Flow (StateFlow, SharedFlow)"></a>3. LiveData / Kotlin Flow (StateFlow, SharedFlow)</h2><p><strong>核心概念:</strong></p>
+<ul>
+<li>  <strong>LiveData:</strong> 一个具有生命周期感知能力的可观察数据持有者类。它只会在关联的 <code>LifecycleOwner</code> (如 Activity/Fragment) 处于活跃状态（STARTED 或 RESUMED）时通知观察者。</li>
+<li>  <strong>Kotlin Flow:</strong> 来自 Kotlin 协程库的冷异步数据流。<code>StateFlow</code> 和 <code>SharedFlow</code> 是其热流变体，特别适用于在 ViewModel 中向 UI 暴露状态。Flow 提供了更丰富的操作符和更灵活的线程控制。</li>
+</ul>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>响应式编程:</strong> 构建数据驱动的 UI，当底层数据变化时自动更新 UI。</li>
+<li>  <strong>生命周期安全 (LiveData):</strong> 自动管理订阅，避免内存泄漏和空指针异常。</li>
+<li>  <strong>与协程集成 (Flow):</strong> 充分利用 Kotlin 协程进行异步操作和数据转换。</li>
+<li>  <strong>现代 Android 开发趋势:</strong> Google 推荐在新的开发中使用 Flow，尤其是在 ViewModel 层。</li>
+</ul>
+<h2 id="4-Jetpack-Compose-声明式-UI"><a href="#4-Jetpack-Compose-声明式-UI" class="headerlink" title="4. Jetpack Compose (声明式 UI)"></a>4. Jetpack Compose (声明式 UI)</h2><p><strong>核心概念:</strong> Jetpack Compose 是 Android 的现代原生 UI 工具包，采用声明式编程范式。开发者只需描述 UI 的外观和状态，Compose 负责在状态变化时高效地更新 UI。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>开发效率:</strong> 代码更少，更直观，加速 UI 开发。</li>
+<li>  <strong>强大的工具:</strong> 内置 Material Design、动画、主题等支持。</li>
+<li>  <strong>Kotlin 优先:</strong> 完全基于 Kotlin 构建，利用其语言特性。</li>
+<li>  <strong>互操作性:</strong> 可以与现有的基于 View 的 UI 混合使用。</li>
+<li>  <strong>未来趋势:</strong> Google 大力推广，是 Android UI 开发的未来方向。</li>
+</ul>
+<h2 id="5-Navigation-导航"><a href="#5-Navigation-导航" class="headerlink" title="5. Navigation (导航)"></a>5. Navigation (导航)</h2><p><strong>核心概念:</strong> <code>Navigation</code> 组件简化了 Android 应用内导航的实现。它提供了一个可视化的导航图编辑器，以及用于处理 Fragment 事务、参数传递、深层链接 (Deep Link) 和动画的 API。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>标准化导航:</strong> 提供一致的应用内导航体验。</li>
+<li>  <strong>简化 Fragment 管理:</strong> 自动处理 Fragment 的添加、替换和返回栈。</li>
+<li>  <strong>类型安全的参数传递:</strong> 使用 Safe Args 插件在目的地之间安全地传递数据。</li>
+<li>  <strong>可视化:</strong> 导航图直观展示应用流程。</li>
+<li>  <strong>处理深层链接:</strong> 轻松实现通过 URL 跳转到应用特定页面的功能。</li>
+</ul>
+<h2 id="6-Room-数据库"><a href="#6-Room-数据库" class="headerlink" title="6. Room (数据库)"></a>6. Room (数据库)</h2><p><strong>核心概念:</strong> <code>Room</code> 是一个基于 SQLite 的对象关系映射 (ORM) 库。它在 SQLite 的基础上提供了一个抽象层，允许更健壮、更方便的数据库访问。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>简化数据库操作:</strong> 使用注解自动生成模板代码，减少手动编写 SQL 的工作量。</li>
+<li>  <strong>编译时 SQL 校验:</strong> 在编译期间检查 SQL 查询语句的正确性。</li>
+<li>  <strong>与 LiveData/Flow 集成:</strong> 可以方便地观察数据库变化并更新 UI。</li>
+<li>  <strong>数据库迁移:</strong> 提供简化的数据库版本迁移方案。</li>
+</ul>
+<h2 id="7-RecyclerView-列表视图"><a href="#7-RecyclerView-列表视图" class="headerlink" title="7. RecyclerView (列表视图)"></a>7. RecyclerView (列表视图)</h2><p><strong>核心概念:</strong> <code>RecyclerView</code> 是一个用于高效显示大型数据集列表的 UI 组件。它通过复用视图 (ViewHolder 模式) 来优化性能和内存使用。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>性能优化:</strong> 高效处理大量数据，避免卡顿和内存溢出。</li>
+<li>  <strong>灵活性:</strong> 支持不同的布局管理器（线性、网格、瀑布流）和自定义项动画。</li>
+<li>  <strong>ViewHolder 模式:</strong> 强制使用 ViewHolder，减少 <code>findViewById</code> 的调用。</li>
+<li>  <strong>DiffUtil:</strong> 配合 <code>ListAdapter</code> 可以高效地计算列表差异并更新 UI，提供流畅的动画效果。</li>
+</ul>
+<h2 id="8-ConstraintLayout-约束布局"><a href="#8-ConstraintLayout-约束布局" class="headerlink" title="8. ConstraintLayout (约束布局)"></a>8. ConstraintLayout (约束布局)</h2><p><strong>核心概念:</strong> <code>ConstraintLayout</code> 是一个强大而灵活的布局管理器，允许开发者通过设置视图之间的约束关系来创建复杂而扁平的视图层级。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>扁平化视图层级:</strong> 减少嵌套，提高布局性能。</li>
+<li>  <strong>灵活性:</strong> 轻松创建相对定位、比例尺寸、链、辅助线等复杂布局。</li>
+<li>  <strong>可视化编辑器:</strong> Android Studio 提供强大的可视化编辑器支持。</li>
+<li>  <strong>响应式布局:</strong> 能够更好地适应不同屏幕尺寸和方向。</li>
+</ul>
+<h2 id="9-WorkManager-后台任务"><a href="#9-WorkManager-后台任务" class="headerlink" title="9. WorkManager (后台任务)"></a>9. WorkManager (后台任务)</h2><p><strong>核心概念:</strong> <code>WorkManager</code> 用于处理需要保证执行的、可延迟的后台任务。即使应用退出或设备重启，WorkManager 也能确保任务最终被执行。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>可靠性:</strong> 保证任务执行，适用于数据同步、日志上传等场景。</li>
+<li>  <strong>兼容性:</strong> 在不同的 Android 版本上选择合适的底层实现（如 <code>JobScheduler</code> 或 <code>AlarmManager</code>）。</li>
+<li>  <strong>任务约束:</strong> 可以为任务设置执行条件（如网络连接、设备充电状态）。</li>
+<li>  <strong>任务链:</strong> 支持按顺序或并行执行一系列任务。</li>
+<li>  <strong>系统优化:</strong> 遵守系统的 Doze 模式和应用待机模式，优化电池消耗。</li>
+</ul>
+<h2 id="10-Paging-3-分页加载"><a href="#10-Paging-3-分页加载" class="headerlink" title="10. Paging 3 (分页加载)"></a>10. Paging 3 (分页加载)</h2><p><strong>核心概念:</strong> <code>Paging 3</code> 库帮助开发者轻松地从本地存储或网络逐步加载和显示大型数据集。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>优化资源消耗:</strong> 按需加载数据，减少网络带宽和设备内存占用。</li>
+<li>  <strong>提升用户体验:</strong> 快速显示首屏数据，滚动时平滑加载更多内容。</li>
+<li>  <strong>与 RecyclerView 集成:</strong> 提供 <code>PagingDataAdapter</code> 简化与 RecyclerView 的集成。</li>
+<li>  <strong>支持数据源多样性:</strong> 可以从数据库 (Room)、网络或自定义数据源加载数据。</li>
+<li>  <strong>内置错误处理和刷新机制。</strong></li>
+</ul>
+<h2 id="11-Data-Binding-View-Binding-视图绑定"><a href="#11-Data-Binding-View-Binding-视图绑定" class="headerlink" title="11. Data Binding / View Binding (视图绑定)"></a>11. Data Binding / View Binding (视图绑定)</h2><p><strong>核心概念:</strong></p>
+<ul>
+<li>  <strong>View Binding:</strong> 生成一个绑定类，直接引用布局文件中的视图，替代 <code>findViewById</code>。类型安全，编译时检查。</li>
+<li>  <strong>Data Binding:</strong> 功能更强大，允许在布局文件中编写简单的逻辑表达式，将数据直接绑定到视图属性上，并支持双向绑定。</li>
+</ul>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>消除 <code>findViewById</code>:</strong> 代码更简洁、安全（避免空指针）。</li>
+<li>  <strong>类型安全:</strong> 在编译时捕获视图 ID 错误。</li>
+<li>  <strong>简化 UI 更新 (Data Binding):</strong> 减少在 Activity/Fragment 中手动设置视图属性的代码。</li>
+<li>  <strong>提高开发效率。</strong> (View Binding 编译更快，更推荐用于仅替代 <code>findViewById</code> 的场景)</li>
+</ul>
+<h2 id="12-Hilt-Dagger-依赖注入"><a href="#12-Hilt-Dagger-依赖注入" class="headerlink" title="12. Hilt / Dagger (依赖注入)"></a>12. Hilt / Dagger (依赖注入)</h2><p><strong>核心概念:</strong> Hilt 是基于 Dagger 构建的、专门为 Android 设计的依赖注入库。它简化了 Dagger 在 Android 应用中的使用，通过注解自动生成样板代码。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>简化依赖注入:</strong> 减少手动创建和管理对象依赖的复杂性。</li>
+<li>  <strong>提高可测试性:</strong> 方便替换依赖项进行单元测试和集成测试。</li>
+<li>  <strong>标准化:</strong> 提供标准的 Android 类注入方式（如 Activity, Fragment, ViewModel）。</li>
+<li>  <strong>与 Jetpack 集成:</strong> 能够轻松地将 ViewModel、WorkManager 等 Jetpack 组件集成到依赖注入图中。</li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Android Jetpack 极大地改善了 Android 开发体验，提供了一系列高质量、一致且易于使用的库来解决常见问题。熟练掌握上述核心组件，特别是架构组件和 Compose，将使你能够构建更健壮、可维护且用户体验更佳的现代 Android 应用。建议持续关注 Jetpack 的更新和新组件的发布。 </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20231105/111500.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20231105/111500.html" class="post-title-link" itemprop="url">一文了解 Android MVI 架构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-11-05 11:15:00" itemprop="dateCreated datePublished" datetime="2023-11-05T11:15:00+08:00">2023-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 16:16:40" itemprop="dateModified" datetime="2025-04-20T16:16:40+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Android 的 ​<strong>MVI（Model-View-Intent）​</strong>​ 是一种响应式架构模式，强调单向数据流和状态管理，适合复杂 UI 交互的应用。以下是其核心要点：</p>
+<hr>
+<h3 id="​1-核心组件​"><a href="#​1-核心组件​" class="headerlink" title="​1. 核心组件​"></a>​<strong>1. 核心组件</strong>​</h3><ul>
+<li>​<strong>Model (状态)​</strong>​：<br>  用不可变数据类表示应用状态（如 <code>data class UiState</code>），确保状态变更可预测。</li>
+<li>​<strong>View (UI)​</strong>​：<br>  Activity/Fragment 只负责渲染状态和发送用户意图（Intent），不处理逻辑。</li>
+<li>​<strong>Intent (用户意图)​</strong>​：<br>  用户操作（如按钮点击）被封装为 Intent（如 <code>Sealed class UserIntent</code>），传递给 ViewModel 处理。</li>
+</ul>
+<hr>
+<h3 id="​2-数据流（单向）​​"><a href="#​2-数据流（单向）​​" class="headerlink" title="​2. 数据流（单向）​​"></a>​<strong>2. 数据流（单向）​</strong>​</h3><ol>
+<li>​<strong>用户触发 Intent</strong>​ →<br> View 将 <code>UserIntent</code> 发送给 ViewModel。</li>
+<li>​<strong>ViewModel 处理</strong>​ →<br> 根据 Intent 执行业务逻辑（如调用 Repository），生成新状态。</li>
+<li>​<strong>状态更新</strong>​ →<br> ViewModel 将新状态 <code>UiState</code> 推送给 View。</li>
+<li>​<strong>UI 渲染</strong>​ →<br> View 根据最新状态自动更新界面。</li>
+</ol>
+<hr>
+<h3 id="​3-关键特点​"><a href="#​3-关键特点​" class="headerlink" title="​3. 关键特点​"></a>​<strong>3. 关键特点</strong>​</h3><ul>
+<li>  ​<strong>单一数据源</strong>​：所有状态集中管理，避免数据不一致。</li>
+<li>  ​<strong>不可变状态</strong>​：状态不可修改，只能通过创建新实例更新。</li>
+<li>  ​<strong>响应式编程</strong>​：常用 Kotlin Flow 或 RxJava 实现数据流。</li>
+<li>  ​<strong>纯函数式处理</strong>​：Intent 到状态的转换是纯函数，易于测试。</li>
+</ul>
+<hr>
+<h3 id="​4-代码示例​"><a href="#​4-代码示例​" class="headerlink" title="​4. 代码示例​"></a>​<strong>4. 代码示例</strong>​</h3><h4 id="​状态定义​"><a href="#​状态定义​" class="headerlink" title="​状态定义​"></a>​<strong>状态定义</strong>​</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">MainUiState</span></span>(</span><br><span class="line">    <span class="keyword">val</span> isLoading: <span class="built_in">Boolean</span> = <span class="literal">false</span>,</span><br><span class="line">    <span class="keyword">val</span> <span class="keyword">data</span>: List&lt;String&gt; = emptyList(),</span><br><span class="line">    <span class="keyword">val</span> error: String? = <span class="literal">null</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="​用户意图​"><a href="#​用户意图​" class="headerlink" title="​用户意图​"></a>​<strong>用户意图</strong>​</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">MainIntent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">object</span> LoadData : MainIntent()</span><br><span class="line">    <span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">DeleteItem</span></span>(<span class="keyword">val</span> id: String) : MainIntent()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="​ViewModel-处理​"><a href="#​ViewModel-处理​" class="headerlink" title="​ViewModel 处理​"></a>​<strong>ViewModel 处理</strong>​</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainViewModel</span> : <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _state = MutableStateFlow(MainUiState())</span><br><span class="line">    <span class="keyword">val</span> state: StateFlow&lt;MainUiState&gt; = _state.asStateFlow()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">processIntent</span><span class="params">(intent: <span class="type">MainIntent</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">when</span> (intent) &#123;</span><br><span class="line">            <span class="keyword">is</span> MainIntent.LoadData -&gt; loadData()</span><br><span class="line">            <span class="keyword">is</span> MainIntent.DeleteItem -&gt; deleteItem(intent.id)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">loadData</span><span class="params">()</span></span> &#123;</span><br><span class="line">        viewModelScope.launch &#123;</span><br><span class="line">            _state.update &#123; it.copy(isLoading = <span class="literal">true</span>) &#125;</span><br><span class="line">            repository.getData()</span><br><span class="line">                .onSuccess &#123; _state.update &#123; it.copy(<span class="keyword">data</span> = it, isLoading = <span class="literal">false</span>) &#125; &#125;</span><br><span class="line">                .onFailure &#123; _state.update &#123; it.copy(error = <span class="string">&quot;加载失败&quot;</span>, isLoading = <span class="literal">false</span>) &#125; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="​View-绑定​"><a href="#​View-绑定​" class="headerlink" title="​View 绑定​"></a>​<strong>View 绑定</strong>​</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Activity/Fragment 中观察状态</span></span><br><span class="line">viewModel.state.collect &#123; state -&gt;</span><br><span class="line">    <span class="keyword">if</span> (state.isLoading) showLoading()</span><br><span class="line">    state.<span class="keyword">data</span>?.let &#123; updateList(it) &#125;</span><br><span class="line">    state.error?.let &#123; showError(it) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送 Intent</span></span><br><span class="line">button.setOnClickListener &#123; </span><br><span class="line">    viewModel.processIntent(MainIntent.LoadData) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="​5-对比其他架构​"><a href="#​5-对比其他架构​" class="headerlink" title="​5. 对比其他架构​"></a>​<strong>5. 对比其他架构</strong>​</h3><ul>
+<li>  ​<strong>MVP</strong>​：MVI 用状态驱动 UI，避免 MVP 中 View 接口的冗余。</li>
+<li>  ​<strong>MVVM</strong>​：MVI 明确约束状态管理，MVVM 的 LiveData 更松散。</li>
+<li>  ​<strong>Redux</strong>​：类似单向数据流，但 MVI 更轻量，适合 Android 场景。</li>
+</ul>
+<hr>
+<h3 id="​6-优缺点​"><a href="#​6-优缺点​" class="headerlink" title="​6. 优缺点​"></a>​<strong>6. 优缺点</strong>​</h3><ul>
+<li><p>​<strong>优点</strong>​：</p>
+<ul>
+<li>  状态管理清晰，适合复杂 UI。</li>
+<li>  易于调试（状态变化可追溯）。</li>
+<li>  天然支持 Jetpack Compose。</li>
+</ul>
+</li>
+<li><p>​<strong>缺点</strong>​：</p>
+<ul>
+<li>  模板代码较多（需定义大量状态类）。</li>
+<li>  学习成本较高（需熟悉响应式编程）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="​适用场景​"><a href="#​适用场景​" class="headerlink" title="​适用场景​"></a>​<strong>适用场景</strong>​</h3><ul>
+<li>  需要严格状态管理的页面（如表单、多步骤操作）。</li>
+<li>  与 Jetpack Compose 结合时效果更佳。</li>
+</ul>
+<p>通过 MVI，可以构建高可维护性、可测试性的 Android 应用。推荐结合 Kotlin Flow 和 Jetpack 组件（如 ViewModel、StateFlow）使用。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20230920/104500.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20230920/104500.html" class="post-title-link" itemprop="url">一文弄懂Kotlin中的by关键字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-20 10:45:00" itemprop="dateCreated datePublished" datetime="2023-09-20T10:45:00+08:00">2023-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 16:16:40" itemprop="dateModified" datetime="2025-04-20T16:16:40+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在 Kotlin 中，<code>by</code> 关键字用于实现<strong>委托模式（Delegation）​</strong>，它允许将某些操作或责任委托给另一个对象来处理。<code>by</code> 主要有两种用途：​<strong>类委托</strong>和<strong>属性委托</strong>。</p>
+<hr>
+<h3 id="1-类委托（Class-Delegation）"><a href="#1-类委托（Class-Delegation）" class="headerlink" title="1. 类委托（Class Delegation）"></a>1. 类委托（Class Delegation）</h3><p>通过 <code>by</code> 关键字，可以将类的接口实现委托给另一个对象。这样可以在不继承的情况下复用现有类的功能。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> : <span class="type">Animal &#123;</span></span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;Woof!&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过 by 将 Animal 接口的实现委托给 dog 对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Robot</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> dog: Dog) : Animal <span class="keyword">by</span> dog &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">move</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;Robot is moving&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> dog = Dog()</span><br><span class="line">    <span class="keyword">val</span> robot = Robot(dog)</span><br><span class="line">    robot.makeSound() <span class="comment">// 实际调用的是 Dog 的 makeSound()</span></span><br><span class="line">    robot.move()      <span class="comment">// Robot 的独有方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  ​<strong>作用</strong>​：<code>Robot</code> 类通过 <code>by dog</code> 委托了 <code>Animal</code> 接口的实现，无需手动重写 <code>makeSound()</code>。</li>
+<li>  ​<strong>优势</strong>​：避免重复代码，优先组合而非继承。</li>
+</ul>
+<hr>
+<h3 id="2-属性委托（Property-Delegation）"><a href="#2-属性委托（Property-Delegation）" class="headerlink" title="2. 属性委托（Property Delegation）"></a>2. 属性委托（Property Delegation）</h3><p>通过 <code>by</code> 将属性的 getter/setter 逻辑委托给一个<strong>委托对象</strong>​（需实现 <code>getValue()</code> 和 <code>setValue()</code> 方法）。Kotlin 标准库提供了几种常用委托：</p>
+<h4 id="常见用途："><a href="#常见用途：" class="headerlink" title="常见用途："></a>常见用途：</h4><h5 id="（1）懒加载委托-lazy"><a href="#（1）懒加载委托-lazy" class="headerlink" title="（1）懒加载委托 lazy"></a>（1）懒加载委托 <code>lazy</code></h5><p>属性在首次访问时初始化。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> heavyData: String <span class="keyword">by</span> lazy &#123;</span><br><span class="line">    println(<span class="string">&quot;Computing heavy data...&quot;</span>)</span><br><span class="line">    <span class="string">&quot;Heavy Result&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(heavyData) <span class="comment">// 第一次访问时计算并缓存</span></span><br><span class="line">    println(heavyData) <span class="comment">// 直接返回缓存结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="（2）观察者委托-Delegates-observable"><a href="#（2）观察者委托-Delegates-observable" class="headerlink" title="（2）观察者委托 Delegates.observable"></a>（2）观察者委托 <code>Delegates.observable</code></h5><p>属性变化时触发回调。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlin.properties.Delegates</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name: String <span class="keyword">by</span> Delegates.observable(<span class="string">&quot;Alice&quot;</span>) &#123; _, old, new -&gt;</span><br><span class="line">    println(<span class="string">&quot;Name changed: <span class="variable">$old</span> -&gt; <span class="variable">$new</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    name = <span class="string">&quot;Bob&quot;</span> <span class="comment">// 输出: Name changed: Alice -&gt; Bob</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）非空校验委托-Delegates-notNull"><a href="#（3）非空校验委托-Delegates-notNull" class="headerlink" title="（3）非空校验委托 Delegates.notNull"></a>（3）非空校验委托 <code>Delegates.notNull</code></h5><p>延迟初始化但确保非空。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age: <span class="built_in">Int</span> <span class="keyword">by</span> Delegates.notNull&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    age = <span class="number">30</span></span><br><span class="line">    println(age) <span class="comment">// 必须先赋值，否则抛 IllegalStateException</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="（4）自定义委托"><a href="#（4）自定义委托" class="headerlink" title="（4）自定义委托"></a>（4）自定义委托</h5><p>实现 <code>ReadWriteProperty</code> 或 <code>ReadOnlyProperty</code> 接口。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StringDelegate</span></span>(<span class="keyword">private</span> <span class="keyword">var</span> value: String) &#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: String &#123;</span><br><span class="line">        println(<span class="string">&quot;Getting value: <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;, newValue: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;Setting value: <span class="variable">$newValue</span>&quot;</span>)</span><br><span class="line">        value = newValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> text <span class="keyword">by</span> StringDelegate(<span class="string">&quot;Default&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(text) <span class="comment">// 输出: Getting value: Default</span></span><br><span class="line">    text = <span class="string">&quot;New&quot;</span>  <span class="comment">// 输出: Setting value: New</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="关键点总结："><a href="#关键点总结：" class="headerlink" title="关键点总结："></a>关键点总结：</h3><ul>
+<li>  ​<strong>类委托</strong>​：通过 <code>by</code> 将接口实现委托给其他对象。</li>
+<li>  ​<strong>属性委托</strong>​：将属性的访问逻辑委托给 <code>lazy</code>、<code>observable</code> 或自定义对象。</li>
+<li>  ​<strong>优势</strong>​：减少重复代码，实现关注点分离（如懒加载、观察模式等）。</li>
+</ul>
+<p>通过 <code>by</code>，Kotlin 以简洁的语法实现了强大的委托模式，是 Kotlin 特色功能之一。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20230905/142000.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20230905/142000.html" class="post-title-link" itemprop="url">Java中有哪几种引用类型？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-05 14:20:00" itemprop="dateCreated datePublished" datetime="2023-09-05T14:20:00+08:00">2023-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:49:46" itemprop="dateModified" datetime="2025-04-20T19:49:46+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Java中的引用类型主要分为四种，它们决定了对象如何被垃圾回收器（GC）处理，适用于不同的内存管理场景：</p>
+<hr>
+<h3 id="1-​强引用（Strong-Reference）​​"><a href="#1-​强引用（Strong-Reference）​​" class="headerlink" title="1. ​强引用（Strong Reference）​​"></a>1. ​<strong>强引用（Strong Reference）​</strong>​</h3><ul>
+<li><p>  ​<strong>特点</strong>​：最常见的引用类型。只要存在强引用指向对象，​<strong>垃圾回收器绝不会回收该对象</strong>​（即使内存不足时可能抛出<code>OutOfMemoryError</code>）。</p>
+</li>
+<li><p>  ​<strong>使用场景</strong>​：普通对象赋值（默认引用类型）。</p>
+</li>
+<li><p>​<strong>示例</strong>​：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object(); <span class="comment">// obj是强引用</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="2-​软引用（Soft-Reference）​​"><a href="#2-​软引用（Soft-Reference）​​" class="headerlink" title="2. ​软引用（Soft Reference）​​"></a>2. ​<strong>软引用（Soft Reference）​</strong>​</h3><ul>
+<li><p>  ​<strong>特点</strong>​：通过<code>SoftReference</code>类实现。描述<strong>有用但非必需</strong>的对象。​<strong>内存不足时</strong>，GC会回收软引用对象（在抛出OOM前清理）。</p>
+</li>
+<li><p>  ​<strong>使用场景</strong>​：实现内存敏感的缓存（如缓存图片、临时数据）。</p>
+</li>
+<li><p>​<strong>示例</strong>​：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SoftReference&lt;Object&gt; softRef = <span class="keyword">new</span> SoftReference&lt;&gt;(<span class="keyword">new</span> Object());</span><br><span class="line">Object obj = softRef.get(); <span class="comment">// 可能返回null（若被回收）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="3-​弱引用（Weak-Reference）​​"><a href="#3-​弱引用（Weak-Reference）​​" class="headerlink" title="3. ​弱引用（Weak Reference）​​"></a>3. ​<strong>弱引用（Weak Reference）​</strong>​</h3><ul>
+<li><p>  ​<strong>特点</strong>​：通过<code>WeakReference</code>类实现。描述非必需对象，​<strong>无论内存是否充足</strong>，​<strong>一旦发生GC就会被回收</strong>。</p>
+</li>
+<li><p>  ​<strong>使用场景</strong>​：避免内存泄漏（如<code>WeakHashMap</code>的键引用）。</p>
+</li>
+<li><p>​<strong>示例</strong>​：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WeakReference&lt;Object&gt; weakRef = <span class="keyword">new</span> WeakReference&lt;&gt;(<span class="keyword">new</span> Object());</span><br><span class="line">Object obj = weakRef.get(); <span class="comment">// 可能已被回收</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="4-​虚引用（Phantom-Reference）​​"><a href="#4-​虚引用（Phantom-Reference）​​" class="headerlink" title="4. ​虚引用（Phantom Reference）​​"></a>4. ​<strong>虚引用（Phantom Reference）​</strong>​</h3><ul>
+<li><p>  ​<strong>特点</strong>​：通过<code>PhantomReference</code>类实现。​<strong>无法通过虚引用访问对象</strong>​（<code>get()</code>始终返回<code>null</code>），主要用于<strong>跟踪对象被回收的状态</strong>。必须与<code>ReferenceQueue</code>配合使用。</p>
+</li>
+<li><p>  ​<strong>使用场景</strong>​：在对象被回收时执行特定清理操作（如释放堆外内存）。</p>
+</li>
+<li><p>​<strong>示例</strong>​：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ReferenceQueue&lt;Object&gt; queue = <span class="keyword">new</span> ReferenceQueue&lt;&gt;();</span><br><span class="line">PhantomReference&lt;Object&gt; phantomRef = <span class="keyword">new</span> PhantomReference&lt;&gt;(<span class="keyword">new</span> Object(), queue);</span><br><span class="line"><span class="comment">// 对象被回收时，phantomRef会被加入队列</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="引用队列（ReferenceQueue）"><a href="#引用队列（ReferenceQueue）" class="headerlink" title="引用队列（ReferenceQueue）"></a>引用队列（ReferenceQueue）</h3><ul>
+<li>  ​<strong>作用</strong>​：软引用、弱引用、虚引用可关联引用队列。当对象被回收时，引用对象（如<code>SoftReference</code>）会被加入队列，用于后续通知或清理操作。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th>引用类型</th>
+<th>回收时机</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>强引用</td>
+<td>永不回收（除非无强引用）</td>
+<td>默认对象引用</td>
+</tr>
+<tr>
+<td>软引用</td>
+<td>内存不足时回收</td>
+<td>缓存</td>
+</tr>
+<tr>
+<td>弱引用</td>
+<td>每次GC时回收</td>
+<td>避免内存泄漏（如WeakHashMap）</td>
+</tr>
+<tr>
+<td>虚引用</td>
+<td>回收时跟踪</td>
+<td>资源清理通知</td>
+</tr>
+</tbody></table>
+<p>理解不同引用类型的特点，可以优化内存管理并避免内存泄漏问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20230820/091500.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20230820/091500.html" class="post-title-link" itemprop="url">使用递归实现二分查找</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-20 09:15:00" itemprop="dateCreated datePublished" datetime="2023-08-20T09:15:00+08:00">2023-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 16:11:08" itemprop="dateModified" datetime="2025-04-20T16:11:08+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>```java<br>/**</p>
+<ul>
+<li>二分查找算法</li>
+<li>/<br>public int binarySearch(int[] array, int targetValue, int start, int end) {<br>  if (start &gt; end) {<pre><code>  // 未找到目标
+  return -1;
+</code></pre>
+  }<br>  int middlePosition = (start + end) / 2;<br>  int middleValue = array[middlePosition];<br>  if (middleValue == targetValue) {<pre><code>  // 找到目标，退出
+  return middlePosition;
+</code></pre>
+  }<br>  if (middleValue &gt; targetValue) {<pre><code>  // 在前半部分继续查找
+  return binarySearch(array, targetValue, start, middlePosition - 1);
+</code></pre>
+  } else {<pre><code>  // 在后半部分继续查找
+  return binarySearch(array, targetValue, middlePosition + 1, end);
+</code></pre>
+  }<br>}</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

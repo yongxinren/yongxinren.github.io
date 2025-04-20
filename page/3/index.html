@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="我的博客">
+<meta property="og:url" content="http://yongxinren.github.com/page/3/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Yongxinren">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20220709/164200.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20220709/164200.html" class="post-title-link" itemprop="url">Interger创建对象的详细流程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-09 16:42:00" itemprop="dateCreated datePublished" datetime="2022-07-09T16:42:00+08:00">2022-07-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:49:59" itemprop="dateModified" datetime="2025-04-20T19:49:59+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>分别写出以下三段代码的执行结果：</strong></p>
+<p>代码片段1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = 100;</span><br><span class="line">Integer integer2 = 100;</span><br><span class="line">System.out.println(integer1 == integer2);</span><br></pre></td></tr></table></figure>
+
+<p>代码片段2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer integer3 = 1000;</span><br><span class="line">Integer integer4 = 1000;</span><br><span class="line">System.out.println(integer3 == integer4);</span><br></pre></td></tr></table></figure>
+
+<p>代码片段3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer integer5 = new Integer(100);</span><br><span class="line">Integer integer6 = new Integer(100);</span><br><span class="line">System.out.println(integer5 == integer6);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>运行结果：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">代码片段1：true</span><br><span class="line">代码片段2：false</span><br><span class="line">代码片段3：false</span><br></pre></td></tr></table></figure>
+
+<p>在<strong>代码片段1</strong>中，100在<code>byte</code>取值范围内，在创建<code>integer1</code>时会新建一个<code>Integer</code>对象并保存到<code>byte</code>常量池中，而<code>integer2</code>的值与<code>integer1</code>相等，此时会直接复用常量池中的对象。因此，<code>integer1</code>与<code>integer2</code>是同一个对象。</p>
+<p>在<strong>代码片段2</strong>中，1000并不在<code>byte</code>取值范围内，每次赋值都会重新创建对象，因此，<code>integer3</code>与<code>integer4</code>是两个不同的对象。</p>
+<p>在<strong>代码片段3</strong>中，因为使用了关键字<code>new</code>，因此无论数值是否在<code>byte</code>取值范围内，每次<code>new</code>都会在堆内存中创建对象。因此，<code>integer5</code>与<code>integer6</code>是两个不同的对象。</p>
+<blockquote>
+<p>注：通常情况下，<code>int hashCode = object.hashCode();</code>返回的即是对象的内存地址，但由于<code>hashCode()</code>可能被重写。因此，可以通过方法<code>int hashCode = System.identityHashCode(object);</code>来获取对象的内存地址。</p>
+</blockquote>
+<p><strong>Integer创建对象的流程</strong></p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/5/20/16ad4d38277b1b35~tplv-t2oaga2asx-image.image"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20220527/091000.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20220527/091000.html" class="post-title-link" itemprop="url">Activity的四种启动模型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-27 09:10:00" itemprop="dateCreated datePublished" datetime="2022-05-27T09:10:00+08:00">2022-05-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:48:09" itemprop="dateModified" datetime="2025-04-20T19:48:09+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在 Android 中，Activity 的启动模式（Launch Mode）决定了 Activity 的实例如何与任务栈（Task）关联，主要影响 Activity 的创建和复用行为。通过 <code>AndroidManifest.xml</code> 中的 <code>launchMode</code> 属性或 Intent 的标志位（Flag）可以配置启动模式。以下是四种标准启动模式及其特点：</p>
+<hr>
+<h3 id="1-​standard（标准模式）​​"><a href="#1-​standard（标准模式）​​" class="headerlink" title="1. ​standard（标准模式）​​"></a>1. ​<strong>standard（标准模式）​</strong>​</h3><ul>
+<li>  ​<strong>默认模式</strong>，每次启动 Activity 都会创建一个新实例，即使该 Activity 已存在。</li>
+<li>  ​<strong>任务栈</strong>​：新实例会放入启动它的 Activity 所在的任务栈中。</li>
+<li>  ​<strong>典型场景</strong>​：普通页面（如新闻详情页），每次打开都需要新实例。</li>
+<li>  ​<strong>注意</strong>​：可能导致栈中多个相同 Activity 实例。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyActivity&quot;</span> <span class="attr">android:launchMode</span>=<span class="string">&quot;standard&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-​singleTop（栈顶复用模式）​​"><a href="#2-​singleTop（栈顶复用模式）​​" class="headerlink" title="2. ​singleTop（栈顶复用模式）​​"></a>2. ​<strong>singleTop（栈顶复用模式）​</strong>​</h3><ul>
+<li>  ​<strong>条件</strong>​：如果 Activity 已位于栈顶，则复用该实例（不会创建新实例），并触发 <code>onNewIntent()</code> 方法。</li>
+<li>  ​<strong>任务栈</strong>​：若不在栈顶，仍会创建新实例。</li>
+<li>  ​<strong>典型场景</strong>​：防止重复打开同一个页面（如通知跳转）。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyActivity&quot;</span> <span class="attr">android:launchMode</span>=<span class="string">&quot;singleTop&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-​singleTask（栈内复用模式）​​"><a href="#3-​singleTask（栈内复用模式）​​" class="headerlink" title="3. ​singleTask（栈内复用模式）​​"></a>3. ​<strong>singleTask（栈内复用模式）​</strong>​</h3><ul>
+<li><p>​<strong>条件</strong>​：系统会寻找是否存在该 Activity 的任务栈：</p>
+<ul>
+<li>  如果存在，则复用该实例（触发 <code>onNewIntent()</code>），并清除该实例上方的所有 Activity。</li>
+<li>  如果不存在，则创建新实例。</li>
+</ul>
+</li>
+<li><p>  ​<strong>任务栈</strong>​：通过 <code>taskAffinity</code> 属性可指定独立的任务栈（默认与调用者相同）。</p>
+</li>
+<li><p>  ​<strong>典型场景</strong>​：应用主页（如微信主页），保证栈中唯一。</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity&quot;</span> <span class="attr">android:launchMode</span>=<span class="string">&quot;singleTask&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-​singleInstance（单例模式）​​"><a href="#4-​singleInstance（单例模式）​​" class="headerlink" title="4. ​singleInstance（单例模式）​​"></a>4. ​<strong>singleInstance（单例模式）​</strong>​</h3><ul>
+<li>  ​<strong>全局唯一</strong>​：Activity 独占一个任务栈，且该栈中只有它一个 Activity。</li>
+<li>  ​<strong>复用规则</strong>​：后续请求直接复用该实例（触发 <code>onNewIntent()</code>）。</li>
+<li>  ​<strong>典型场景</strong>​：独立运行的页面（如系统拨号盘）。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.CallActivity&quot;</span> <span class="attr">android:launchMode</span>=<span class="string">&quot;singleInstance&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="其他启动方式：Intent-Flags"><a href="#其他启动方式：Intent-Flags" class="headerlink" title="其他启动方式：Intent Flags"></a>其他启动方式：Intent Flags</h3><p>除了 <code>launchMode</code>，还可以通过 Intent 的标志位动态控制启动行为：</p>
+<ul>
+<li>  ​<code>FLAG_ACTIVITY_NEW_TASK</code>​：类似 <code>singleTask</code>，启动新任务栈。</li>
+<li>  ​<code>FLAG_ACTIVITY_SINGLE_TOP</code>​：类似 <code>singleTop</code>。</li>
+<li>  ​<code>FLAG_ACTIVITY_CLEAR_TOP</code>​：若目标 Activity 已存在，清除其上方所有 Activity。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyActivity.class);</span><br><span class="line">intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="关键区别总结"><a href="#关键区别总结" class="headerlink" title="关键区别总结"></a>关键区别总结</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>是否创建新实例</th>
+<th>是否清除栈顶上方</th>
+<th>任务栈归属</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>standard</code></td>
+<td>总是创建</td>
+<td>否</td>
+<td>调用者栈</td>
+</tr>
+<tr>
+<td><code>singleTop</code></td>
+<td>栈顶时复用</td>
+<td>否</td>
+<td>调用者栈</td>
+</tr>
+<tr>
+<td><code>singleTask</code></td>
+<td>栈内复用</td>
+<td>是</td>
+<td>可独立栈</td>
+</tr>
+<tr>
+<td><code>singleInstance</code></td>
+<td>全局唯一</td>
+<td>否</td>
+<td>独占新栈</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li> ​<strong>任务栈（Task）​</strong>​：Android 通过任务栈管理 Activity 的返回栈，不同应用可能共享或隔离任务栈。</li>
+<li> ​<code>taskAffinity</code>​：通常与 <code>singleTask</code> 配合使用，指定 Activity 的偏好任务栈。</li>
+<li> ​<strong>多进程问题</strong>​：避免在 <code>singleInstance</code> 或 <code>singleTask</code> 中滥用，可能导致多进程冲突。</li>
+</ol>
+<p>正确选择启动模式可以优化用户体验（如避免页面重复）和内存管理。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20220314/102200.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20220314/102200.html" class="post-title-link" itemprop="url">Android Handler 机制详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-14 10:22:00" itemprop="dateCreated datePublished" datetime="2022-03-14T10:22:00+08:00">2022-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:48:06" itemprop="dateModified" datetime="2025-04-20T19:48:06+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Handler 是 Android 系统中用于线程间通信的核心机制，它基于消息队列(MessageQueue)和循环器(Looper)实现，主要用于在不同线程间发送和处理消息。</p>
+<h2 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h2><ol>
+<li><p><strong>Handler</strong>：消息的发送者和处理者</p>
+<ul>
+<li>发送消息到 MessageQueue</li>
+<li>处理从 MessageQueue 取出的消息</li>
+</ul>
+</li>
+<li><p><strong>MessageQueue</strong>：消息队列</p>
+<ul>
+<li>以队列形式管理 Message</li>
+<li>按时间顺序排列消息</li>
+</ul>
+</li>
+<li><p><strong>Looper</strong>：消息循环</p>
+<ul>
+<li>不断从 MessageQueue 取出消息</li>
+<li>将消息分发给对应的 Handler 处理</li>
+</ul>
+</li>
+<li><p><strong>Message</strong>：消息载体</p>
+<ul>
+<li>包含消息内容和处理者信息</li>
+</ul>
+</li>
+</ol>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><ol>
+<li><p><strong>主线程的 Looper 准备</strong>：</p>
+<ul>
+<li>Android 主线程(UI 线程)在启动时就已经通过 <code>Looper.prepareMainLooper()</code> 初始化了 Looper</li>
+<li>开发者无需手动为主线程创建 Looper</li>
+</ul>
+</li>
+<li><p><strong>子线程使用 Handler</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在子线程中</span></span><br><span class="line">Looper.prepare(); <span class="comment">// 初始化Looper</span></span><br><span class="line">Handler handler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 处理消息</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Looper.loop(); <span class="comment">// 开始消息循环</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>消息发送流程</strong>：</p>
+<ul>
+<li>Handler 发送消息 (<code>sendMessage()</code> 或 <code>post()</code>)</li>
+<li>消息被加入 MessageQueue</li>
+<li>Looper 不断循环从 MessageQueue 取出消息</li>
+<li>消息被分发回 Handler 的 <code>handleMessage()</code> 处理</li>
+</ul>
+</li>
+</ol>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ol>
+<li><p><strong>发送消息</strong>：</p>
+<ul>
+<li><code>sendMessage(Message msg)</code></li>
+<li><code>sendEmptyMessage(int what)</code></li>
+<li><code>post(Runnable r)</code></li>
+<li><code>sendMessageDelayed(Message msg, long delayMillis)</code></li>
+</ul>
+</li>
+<li><p><strong>处理消息</strong>：</p>
+<ul>
+<li><code>handleMessage(Message msg)</code> (需重写)</li>
+</ul>
+</li>
+<li><p><strong>移除消息</strong>：</p>
+<ul>
+<li><code>removeMessages(int what)</code></li>
+<li><code>removeCallbacks(Runnable r)</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="内存泄漏问题"><a href="#内存泄漏问题" class="headerlink" title="内存泄漏问题"></a>内存泄漏问题</h2><p>Handler 使用不当容易引起内存泄漏，常见场景：</p>
+<ul>
+<li>非静态内部类 Handler 隐式持有外部类(如 Activity)引用</li>
+<li>消息队列中未处理完的消息持有 Handler 引用</li>
+</ul>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li><p>使用静态内部类 + WeakReference</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> WeakReference&lt;Activity&gt; mActivity;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        mActivity = <span class="keyword">new</span> WeakReference&lt;&gt;(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">        Activity activity = mActivity.get();</span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 处理消息</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>在 Activity 销毁时清除消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    handler.removeCallbacksAndMessages(<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="典型应用场景"><a href="#典型应用场景" class="headerlink" title="典型应用场景"></a>典型应用场景</h2><ol>
+<li>子线程执行耗时任务后更新 UI</li>
+<li>定时任务执行</li>
+<li>延迟任务处理</li>
+<li>不同组件间的通信</li>
+</ol>
+<p>Handler 机制是 Android 异步编程的基础，理解其原理对于开发高效、稳定的 Android 应用至关重要。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20210508/105300.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20210508/105300.html" class="post-title-link" itemprop="url">如何判断当前View对用户是否可见？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-08 10:53:00" itemprop="dateCreated datePublished" datetime="2021-05-08T10:53:00+08:00">2021-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 16:30:31" itemprop="dateModified" datetime="2025-04-20T16:30:31+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Android开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android%E5%BC%80%E5%8F%91/UI%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">UI优化</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InitFactory</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Rect RECT = <span class="keyword">new</span> Rect();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 当前View是否对用户可见</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isVisibleToUser</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 判断当前View及其父View是否可见</span></span><br><span class="line">        <span class="keyword">boolean</span> isShown = view.isShown();</span><br><span class="line">        <span class="comment">// 判断当前View所在的Window是否可见</span></span><br><span class="line">        <span class="keyword">boolean</span> hasWindowFocus = view.hasWindowFocus();</span><br><span class="line">        <span class="keyword">boolean</span> isWindowVisible = view.getWindowVisibility() == View.VISIBLE;</span><br><span class="line">        <span class="comment">// 是否在屏幕的显示区域内</span></span><br><span class="line">        <span class="keyword">boolean</span> globalVisible = view.getGlobalVisibleRect(InitFactory.RECT);</span><br><span class="line">        <span class="comment">// 综合判断当前View是否可见</span></span><br><span class="line">        <span class="keyword">return</span> isShown &amp;&amp; hasWindowFocus &amp;&amp; isWindowVisible &amp;&amp; globalVisible;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20201113/173300.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20201113/173300.html" class="post-title-link" itemprop="url">使用OkHttp实现推送功能</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 17:33:00" itemprop="dateCreated datePublished" datetime="2020-11-13T17:33:00+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 17:27:22" itemprop="dateModified" datetime="2025-04-20T17:27:22+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><ol>
+<li>使用<code>OkHttpClient#newWebSocket</code>建立长连接；</li>
+<li>监听连接成功事件(<code>WebSocketListener#onOpen</code>)；</li>
+<li>连接成功后使用<code>WebSocket#send</code>向服务端发送数据；</li>
+<li>需要结束时使用<code>WebSocket#close</code>关闭长连接。</li>
+</ol>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder().build();</span><br><span class="line">Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;ws://***&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line">client.newWebSocket(request, <span class="keyword">new</span> WebSocketListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOpen</span><span class="params">(WebSocket webSocket, Response response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 连接成功后向服务端发送数据(比如注册渠道)</span></span><br><span class="line">        String json = <span class="string">&quot;&#123;***&#125;&quot;</span></span><br><span class="line">        webSocket.send(json);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(WebSocket webSocket, String text)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 接收到推送的文本数据</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(WebSocket webSocket, ByteString bytes)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 接收到推送的二进制数据</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClosing</span><span class="params">(WebSocket webSocket, <span class="keyword">int</span> code, String reason)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 推送正在关闭</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClosed</span><span class="params">(WebSocket webSocket, <span class="keyword">int</span> code, String reason)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 推送已关闭</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(WebSocket webSocket, Throwable t, Response response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 推送连接失败</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20201111/200600.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/20201111/200600.html" class="post-title-link" itemprop="url">[自定义图表]数据与坐标的相互转换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-11 20:06:00" itemprop="dateCreated datePublished" datetime="2020-11-11T20:06:00+08:00">2020-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:36:41" itemprop="dateModified" datetime="2025-04-20T19:36:41+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数值转坐标"><a href="#数值转坐标" class="headerlink" title="数值转坐标"></a>数值转坐标</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 数值到坐标的转换器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Function&lt;Float, Float&gt; <span class="title">getCanvasY</span><span class="params">(<span class="keyword">int</span> maxY, <span class="keyword">int</span> minY, <span class="keyword">float</span> maxValue, <span class="keyword">float</span> minValue)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value -&gt; &#123;</span><br><span class="line">        <span class="keyword">float</span> canvasDistance = maxY - minY;</span><br><span class="line">        <span class="keyword">float</span> valueDistance = maxValue - minValue;</span><br><span class="line">        <span class="keyword">float</span> scale = canvasDistance / valueDistance;</span><br><span class="line">        <span class="keyword">return</span> maxY - (value - minValue) * scale;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

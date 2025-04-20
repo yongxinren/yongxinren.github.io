@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="好的，要在 Jetpack Compose 中绘制自定义图形，最核心的方式是使用 Canvas 可组合项 (Composable)。Canvas 提供了一个二维绘图环境，你可以在其中使用各种绘制命令来创建你想要的任何视觉效果。 以下是如何在 Compose 中进行自定义绘制的步骤和关键概念： 1. 使用 Canvas Composable:    Canvas 是一个 Composable 函数，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jetpack Compose 中绘制自定义图形">
+<meta property="og:url" content="http://yongxinren.github.com/20240823/170800.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="好的，要在 Jetpack Compose 中绘制自定义图形，最核心的方式是使用 Canvas 可组合项 (Composable)。Canvas 提供了一个二维绘图环境，你可以在其中使用各种绘制命令来创建你想要的任何视觉效果。 以下是如何在 Compose 中进行自定义绘制的步骤和关键概念： 1. 使用 Canvas Composable:    Canvas 是一个 Composable 函数，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-23T09:08:00.000Z">
+<meta property="article:modified_time" content="2025-04-20T11:46:26.637Z">
+<meta property="article:author" content="Yongxinren">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Jetpack Compose">
+<meta property="article:tag" content="自定义控件">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/20240823/170800.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Jetpack Compose 中绘制自定义图形 | 我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20240823/170800.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Jetpack Compose 中绘制自定义图形
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-08-23 17:08:00" itemprop="dateCreated datePublished" datetime="2024-08-23T17:08:00+08:00">2024-08-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:26" itemprop="dateModified" datetime="2025-04-20T19:46:26+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>好的，要在 Jetpack Compose 中绘制自定义图形，最核心的方式是使用 <code>Canvas</code> 可组合项 (Composable)。<code>Canvas</code> 提供了一个二维绘图环境，你可以在其中使用各种绘制命令来创建你想要的任何视觉效果。</p>
+<p>以下是如何在 Compose 中进行自定义绘制的步骤和关键概念：</p>
+<p><strong>1. 使用 <code>Canvas</code> Composable:</strong></p>
+<p>   <code>Canvas</code> 是一个 Composable 函数，它接收一个 <code>modifier</code> 来定义其尺寸（非常重要，否则画布没有大小），以及一个 <code>onDraw</code> lambda 函数。所有的绘制操作都在这个 <code>onDraw</code> lambda 的 <code>DrawScope</code> 上下文中执行。</p>
+   <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.foundation.Canvas</span><br><span class="line"><span class="keyword">import</span> androidx.compose.foundation.layout.fillMaxSize</span><br><span class="line"><span class="keyword">import</span> androidx.compose.runtime.Composable</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.Modifier</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Color <span class="comment">// 导入 Color</span></span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.drawscope.DrawScope <span class="comment">// 导入 DrawScope</span></span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.tooling.preview.Preview</span><br><span class="line"></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">MyCustomDrawing</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Canvas(</span><br><span class="line">        modifier = Modifier.fillMaxSize() <span class="comment">// 给 Canvas 指定大小，这里填满父布局</span></span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// 所有的绘制代码都写在这里</span></span><br><span class="line">        <span class="comment">// &#x27;this&#x27; 指向 DrawScope</span></span><br><span class="line">        drawRect(color = Color.Blue) <span class="comment">// 示例：绘制一个填满画布的蓝色矩形</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Preview(showBackground = true)</span></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">PreviewMyCustomDrawing</span><span class="params">()</span></span> &#123;</span><br><span class="line">    MyCustomDrawing()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 理解 <code>DrawScope</code>:</strong></p>
+<p>   <code>onDraw</code> lambda 的接收者类型是 <code>DrawScope</code>。它提供了：</p>
+<ul>
+<li>  <strong>绘图函数:</strong> 如 <code>drawLine</code>, <code>drawRect</code>, <code>drawCircle</code>, <code>drawOval</code>, <code>drawArc</code>, <code>drawPath</code>, <code>drawImage</code>, <code>drawText</code> 等。</li>
+<li>  <strong>画布信息:</strong> 最重要的是 <code>size</code> 属性，它是一个 <code>Size</code> 对象，包含画布的 <code>width</code> 和 <code>height</code>。你可以基于这个 <code>size</code> 来进行相对定位和尺寸计算。</li>
+<li>  <strong>变换操作:</strong> 如 <code>translate</code>, <code>rotate</code>, <code>scale</code>, <code>inset</code> 等，可以改变绘制坐标系。</li>
+</ul>
+<p><strong>3. 常用的绘制函数 (<code>DrawScope</code> 内):</strong></p>
+<ul>
+<li><strong>绘制线条:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">drawLine(</span><br><span class="line">    color = Color.Red,</span><br><span class="line">    start = Offset(x = <span class="number">0f</span>, y = <span class="number">0f</span>), <span class="comment">// 起点坐标 (x, y)</span></span><br><span class="line">    end = Offset(x = size.width, y = size.height), <span class="comment">// 终点坐标</span></span><br><span class="line">    strokeWidth = <span class="number">5f</span> <span class="comment">// 线条宽度</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制矩形:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">drawRect(</span><br><span class="line">    color = Color.Green,</span><br><span class="line">    topLeft = Offset(x = size.width / <span class="number">4</span>, y = size.height / <span class="number">4</span>), <span class="comment">// 左上角坐标</span></span><br><span class="line">    size = Size(width = size.width / <span class="number">2</span>, height = size.height / <span class="number">2</span>) <span class="comment">// 矩形尺寸</span></span><br><span class="line">    <span class="comment">// style = Fill // 默认是填充 (Fill)</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// 绘制描边矩形</span></span><br><span class="line">drawRect(</span><br><span class="line">    color = Color.Black,</span><br><span class="line">    topLeft = Offset(x = <span class="number">10f</span>, y = <span class="number">10f</span>),</span><br><span class="line">    size = Size(width = <span class="number">100f</span>, height = <span class="number">50f</span>),</span><br><span class="line">    style = androidx.compose.ui.graphics.drawscope.Stroke(width = <span class="number">3f</span>) <span class="comment">// 使用 Stroke 进行描边</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制圆形:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">drawCircle(</span><br><span class="line">    color = Color.Magenta,</span><br><span class="line">    radius = size.minDimension / <span class="number">4</span>, <span class="comment">// 半径，取宽高最小值的一半</span></span><br><span class="line">    center = center <span class="comment">// center 是 DrawScope 提供的画布中心 Offset</span></span><br><span class="line">    <span class="comment">// style = Fill // 默认填充</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制椭圆:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">drawOval(</span><br><span class="line">    color = Color.Yellow,</span><br><span class="line">    topLeft = Offset(x = <span class="number">50f</span>, y = <span class="number">200f</span>),</span><br><span class="line">    size = Size(width = <span class="number">200f</span>, height = <span class="number">100f</span>) <span class="comment">// 定义椭圆的外切矩形</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><strong>绘制圆弧:</strong><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">drawArc(</span><br><span class="line">    color = Color.Cyan,</span><br><span class="line">    startAngle = <span class="number">0f</span>,       <span class="comment">// 起始角度 (0度是3点钟方向)</span></span><br><span class="line">    sweepAngle = <span class="number">180f</span>,     <span class="comment">// 扫过的角度 (顺时针)</span></span><br><span class="line">    useCenter = <span class="literal">true</span>,      <span class="comment">// 是否连接到圆心，形成扇形 (true) 或弓形 (false)</span></span><br><span class="line">    topLeft = Offset(x = size.width * <span class="number">0.1f</span>, y = size.height * <span class="number">0.6f</span>),</span><br><span class="line">    size = Size(width = size.width * <span class="number">0.8f</span>, height = size.width * <span class="number">0.8f</span>) <span class="comment">// 圆弧所在椭圆的外切矩形</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>4. 使用 <code>Path</code> 绘制复杂图形:</strong></p>
+<p>   对于不规则或复杂的形状，使用 <code>Path</code>。<code>Path</code> 对象允许你定义一系列的线段、曲线等来构建形状。</p>
+   <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Path</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 在 Canvas 的 onDraw 中 ...</span></span><br><span class="line"><span class="keyword">val</span> path = Path().apply &#123;</span><br><span class="line">    moveTo(x = size.width / <span class="number">2</span>, y = <span class="number">0f</span>) <span class="comment">// 移动到起点</span></span><br><span class="line">    lineTo(x = size.width, y = size.height / <span class="number">2</span>) <span class="comment">// 画线到...</span></span><br><span class="line">    lineTo(x = size.width / <span class="number">2</span>, y = size.height)</span><br><span class="line">    lineTo(x = <span class="number">0f</span>, y = size.height / <span class="number">2</span>)</span><br><span class="line">    close() <span class="comment">// 闭合路径 (连接起点和终点)</span></span><br><span class="line">&#125;</span><br><span class="line">drawPath(</span><br><span class="line">    path = path,</span><br><span class="line">    color = Color.DarkGray</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>   <code>Path</code> 支持 <code>moveTo</code>, <code>lineTo</code>, <code>quadraticBezierTo</code> (二次贝塞尔曲线), <code>cubicTo</code> (三次贝塞尔曲线), <code>addRect</code>, <code>addOval</code> 等多种命令。</p>
+<p><strong>5. 使用 <code>Brush</code> (画笔) 实现渐变等效果:</strong></p>
+<p>   除了纯色 (<code>Color</code>)，你还可以使用 <code>Brush</code> 来填充或描边，创建渐变效果。</p>
+   <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Brush</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 在 Canvas 的 onDraw 中 ...</span></span><br><span class="line"><span class="keyword">val</span> gradientBrush = Brush.linearGradient(</span><br><span class="line">    colors = listOf(Color.Red, Color.Blue),</span><br><span class="line">    start = Offset.Zero, <span class="comment">// 渐变起始点</span></span><br><span class="line">    end = Offset(x = size.width, y = size.height) <span class="comment">// 渐变结束点</span></span><br><span class="line">)</span><br><span class="line">drawCircle(</span><br><span class="line">    brush = gradientBrush, <span class="comment">// 使用画笔代替纯色</span></span><br><span class="line">    radius = size.minDimension / <span class="number">3</span>,</span><br><span class="line">    center = center</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> radialBrush = Brush.radialGradient(</span><br><span class="line">    colors = listOf(Color.Yellow, Color.Transparent),</span><br><span class="line">    center = center,</span><br><span class="line">    radius = size.minDimension / <span class="number">5</span></span><br><span class="line">)</span><br><span class="line">drawRect(brush = radialBrush)</span><br></pre></td></tr></table></figure>
+<p>   还有 <code>Brush.radialGradient</code> (径向渐变) 和 <code>Brush.sweepGradient</code> (扫描渐变)。</p>
+<p><strong>6. 结合状态和交互:</strong></p>
+<ul>
+<li>  <strong>响应状态变化:</strong> 如果你的绘图依赖于某些状态（例如，滑块位置、按钮点击次数），将这些状态用 <code>remember &#123; mutableStateOf(...) &#125;</code> 或通过 ViewModel 管理。当状态改变时，Compose 会触发重组 (recomposition)，<code>Canvas</code> 的 <code>onDraw</code> 会重新执行，使用新的状态值进行绘制。</li>
+<li>  <strong>添加交互:</strong> 你可以在 <code>Canvas</code> 上应用 <code>Modifier.pointerInput</code> 来检测触摸事件（点击、拖动等），然后更新状态，从而动态地改变绘制内容。</li>
+</ul>
+<p><strong>示例：绘制一个简单的同心圆</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.compose.foundation.Canvas</span><br><span class="line"><span class="keyword">import</span> androidx.compose.foundation.layout.size</span><br><span class="line"><span class="keyword">import</span> androidx.compose.runtime.Composable</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.Modifier</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.geometry.Offset</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.Color</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.graphics.drawscope.Stroke</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.tooling.preview.Preview</span><br><span class="line"><span class="keyword">import</span> androidx.compose.ui.unit.dp</span><br><span class="line"></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">ConcentricCircles</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Canvas(modifier = Modifier.size(<span class="number">200.</span>dp)) &#123; <span class="comment">// 固定大小的 Canvas</span></span><br><span class="line">        <span class="keyword">val</span> canvasWidth = size.width</span><br><span class="line">        <span class="keyword">val</span> canvasHeight = size.height</span><br><span class="line">        <span class="keyword">val</span> center = Offset(x = canvasWidth / <span class="number">2</span>, y = canvasHeight / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">val</span> strokeWidth = <span class="number">10f</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 外圆 (红色描边)</span></span><br><span class="line">        drawCircle(</span><br><span class="line">            color = Color.Red,</span><br><span class="line">            center = center,</span><br><span class="line">            radius = size.minDimension / <span class="number">2</span> - strokeWidth / <span class="number">2</span>, <span class="comment">// 考虑描边宽度</span></span><br><span class="line">            style = Stroke(width = strokeWidth)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 中圆 (蓝色描边)</span></span><br><span class="line">        drawCircle(</span><br><span class="line">            color = Color.Blue,</span><br><span class="line">            center = center,</span><br><span class="line">            radius = size.minDimension / <span class="number">3</span> - strokeWidth / <span class="number">2</span>,</span><br><span class="line">            style = Stroke(width = strokeWidth)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 内圆 (绿色填充)</span></span><br><span class="line">        drawCircle(</span><br><span class="line">            color = Color.Green,</span><br><span class="line">            center = center,</span><br><span class="line">            radius = size.minDimension / <span class="number">6</span></span><br><span class="line">            <span class="comment">// style = Fill // 默认填充</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Preview(showBackground = true)</span></span><br><span class="line"><span class="meta">@Composable</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">PreviewConcentricCircles</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ConcentricCircles()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong></p>
+<p>使用 <code>Canvas</code> 可组合项是 Jetpack Compose 中进行自定义图形绘制的主要方式。通过理解 <code>DrawScope</code> 提供的绘图函数、画布信息以及结合 <code>Path</code> 和 <code>Brush</code>，你可以创建出丰富多样的自定义视觉效果。记住，始终要为 <code>Canvas</code> 提供一个 <code>Modifier</code> 来确定其尺寸。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Jetpack-Compose/" rel="tag"># Jetpack Compose</a>
+              <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/" rel="tag"># 自定义控件</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/20240607/114500.html" rel="prev" title="Android WorkManager 简介">
+      <i class="fa fa-chevron-left"></i> Android WorkManager 简介
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/20241011/085600.html" rel="next" title="一文弄懂 repeatOnLifecycle">
+      一文弄懂 repeatOnLifecycle <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

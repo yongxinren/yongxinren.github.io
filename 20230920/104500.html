@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在 Kotlin 中，by 关键字用于实现委托模式（Delegation）​，它允许将某些操作或责任委托给另一个对象来处理。by 主要有两种用途：​类委托和属性委托。  1. 类委托（Class Delegation）通过 by 关键字，可以将类的接口实现委托给另一个对象。这样可以在不继承的情况下复用现有类的功能。 示例：1234567891011121314151617181920212223i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文弄懂Kotlin中的by关键字">
+<meta property="og:url" content="http://yongxinren.github.com/20230920/104500.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="在 Kotlin 中，by 关键字用于实现委托模式（Delegation）​，它允许将某些操作或责任委托给另一个对象来处理。by 主要有两种用途：​类委托和属性委托。  1. 类委托（Class Delegation）通过 by 关键字，可以将类的接口实现委托给另一个对象。这样可以在不继承的情况下复用现有类的功能。 示例：1234567891011121314151617181920212223i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-20T02:45:00.000Z">
+<meta property="article:modified_time" content="2025-04-20T08:16:40.723Z">
+<meta property="article:author" content="Yongxinren">
+<meta property="article:tag" content="Kotlin">
+<meta property="article:tag" content="委托">
+<meta property="article:tag" content="属性委托">
+<meta property="article:tag" content="类委托">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/20230920/104500.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>一文弄懂Kotlin中的by关键字 | 我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20230920/104500.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一文弄懂Kotlin中的by关键字
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-20 10:45:00" itemprop="dateCreated datePublished" datetime="2023-09-20T10:45:00+08:00">2023-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 16:16:40" itemprop="dateModified" datetime="2025-04-20T16:16:40+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在 Kotlin 中，<code>by</code> 关键字用于实现<strong>委托模式（Delegation）​</strong>，它允许将某些操作或责任委托给另一个对象来处理。<code>by</code> 主要有两种用途：​<strong>类委托</strong>和<strong>属性委托</strong>。</p>
+<hr>
+<h3 id="1-类委托（Class-Delegation）"><a href="#1-类委托（Class-Delegation）" class="headerlink" title="1. 类委托（Class Delegation）"></a>1. 类委托（Class Delegation）</h3><p>通过 <code>by</code> 关键字，可以将类的接口实现委托给另一个对象。这样可以在不继承的情况下复用现有类的功能。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> : <span class="type">Animal &#123;</span></span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;Woof!&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过 by 将 Animal 接口的实现委托给 dog 对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Robot</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> dog: Dog) : Animal <span class="keyword">by</span> dog &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">move</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;Robot is moving&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> dog = Dog()</span><br><span class="line">    <span class="keyword">val</span> robot = Robot(dog)</span><br><span class="line">    robot.makeSound() <span class="comment">// 实际调用的是 Dog 的 makeSound()</span></span><br><span class="line">    robot.move()      <span class="comment">// Robot 的独有方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  ​<strong>作用</strong>​：<code>Robot</code> 类通过 <code>by dog</code> 委托了 <code>Animal</code> 接口的实现，无需手动重写 <code>makeSound()</code>。</li>
+<li>  ​<strong>优势</strong>​：避免重复代码，优先组合而非继承。</li>
+</ul>
+<hr>
+<h3 id="2-属性委托（Property-Delegation）"><a href="#2-属性委托（Property-Delegation）" class="headerlink" title="2. 属性委托（Property Delegation）"></a>2. 属性委托（Property Delegation）</h3><p>通过 <code>by</code> 将属性的 getter/setter 逻辑委托给一个<strong>委托对象</strong>​（需实现 <code>getValue()</code> 和 <code>setValue()</code> 方法）。Kotlin 标准库提供了几种常用委托：</p>
+<h4 id="常见用途："><a href="#常见用途：" class="headerlink" title="常见用途："></a>常见用途：</h4><h5 id="（1）懒加载委托-lazy"><a href="#（1）懒加载委托-lazy" class="headerlink" title="（1）懒加载委托 lazy"></a>（1）懒加载委托 <code>lazy</code></h5><p>属性在首次访问时初始化。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> heavyData: String <span class="keyword">by</span> lazy &#123;</span><br><span class="line">    println(<span class="string">&quot;Computing heavy data...&quot;</span>)</span><br><span class="line">    <span class="string">&quot;Heavy Result&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(heavyData) <span class="comment">// 第一次访问时计算并缓存</span></span><br><span class="line">    println(heavyData) <span class="comment">// 直接返回缓存结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="（2）观察者委托-Delegates-observable"><a href="#（2）观察者委托-Delegates-observable" class="headerlink" title="（2）观察者委托 Delegates.observable"></a>（2）观察者委托 <code>Delegates.observable</code></h5><p>属性变化时触发回调。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlin.properties.Delegates</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name: String <span class="keyword">by</span> Delegates.observable(<span class="string">&quot;Alice&quot;</span>) &#123; _, old, new -&gt;</span><br><span class="line">    println(<span class="string">&quot;Name changed: <span class="variable">$old</span> -&gt; <span class="variable">$new</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    name = <span class="string">&quot;Bob&quot;</span> <span class="comment">// 输出: Name changed: Alice -&gt; Bob</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）非空校验委托-Delegates-notNull"><a href="#（3）非空校验委托-Delegates-notNull" class="headerlink" title="（3）非空校验委托 Delegates.notNull"></a>（3）非空校验委托 <code>Delegates.notNull</code></h5><p>延迟初始化但确保非空。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age: <span class="built_in">Int</span> <span class="keyword">by</span> Delegates.notNull&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    age = <span class="number">30</span></span><br><span class="line">    println(age) <span class="comment">// 必须先赋值，否则抛 IllegalStateException</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="（4）自定义委托"><a href="#（4）自定义委托" class="headerlink" title="（4）自定义委托"></a>（4）自定义委托</h5><p>实现 <code>ReadWriteProperty</code> 或 <code>ReadOnlyProperty</code> 接口。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StringDelegate</span></span>(<span class="keyword">private</span> <span class="keyword">var</span> value: String) &#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: String &#123;</span><br><span class="line">        println(<span class="string">&quot;Getting value: <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;, newValue: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;Setting value: <span class="variable">$newValue</span>&quot;</span>)</span><br><span class="line">        value = newValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> text <span class="keyword">by</span> StringDelegate(<span class="string">&quot;Default&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(text) <span class="comment">// 输出: Getting value: Default</span></span><br><span class="line">    text = <span class="string">&quot;New&quot;</span>  <span class="comment">// 输出: Setting value: New</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="关键点总结："><a href="#关键点总结：" class="headerlink" title="关键点总结："></a>关键点总结：</h3><ul>
+<li>  ​<strong>类委托</strong>​：通过 <code>by</code> 将接口实现委托给其他对象。</li>
+<li>  ​<strong>属性委托</strong>​：将属性的访问逻辑委托给 <code>lazy</code>、<code>observable</code> 或自定义对象。</li>
+<li>  ​<strong>优势</strong>​：减少重复代码，实现关注点分离（如懒加载、观察模式等）。</li>
+</ul>
+<p>通过 <code>by</code>，Kotlin 以简洁的语法实现了强大的委托模式，是 Kotlin 特色功能之一。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+              <a href="/tags/%E5%A7%94%E6%89%98/" rel="tag"># 委托</a>
+              <a href="/tags/%E5%B1%9E%E6%80%A7%E5%A7%94%E6%89%98/" rel="tag"># 属性委托</a>
+              <a href="/tags/%E7%B1%BB%E5%A7%94%E6%89%98/" rel="tag"># 类委托</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/20230905/142000.html" rel="prev" title="Java中有哪几种引用类型？">
+      <i class="fa fa-chevron-left"></i> Java中有哪几种引用类型？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/20231105/111500.html" rel="next" title="一文了解 Android MVI 架构">
+      一文了解 Android MVI 架构 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%B1%BB%E5%A7%94%E6%89%98%EF%BC%88Class-Delegation%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">1. 类委托（Class Delegation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E5%A7%94%E6%89%98%EF%BC%88Property-Delegation%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">2. 属性委托（Property Delegation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E9%80%94%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">常见用途：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%87%92%E5%8A%A0%E8%BD%BD%E5%A7%94%E6%89%98-lazy"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）懒加载委托 lazy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E8%A7%82%E5%AF%9F%E8%80%85%E5%A7%94%E6%89%98-Delegates-observable"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）观察者委托 Delegates.observable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E9%9D%9E%E7%A9%BA%E6%A0%A1%E9%AA%8C%E5%A7%94%E6%89%98-Delegates-notNull"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）非空校验委托 Delegates.notNull</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A7%94%E6%89%98"><span class="nav-number">2.1.4.</span> <span class="nav-text">（4）自定义委托</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">关键点总结：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

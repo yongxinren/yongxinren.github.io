@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Fragment的生命周期定义了其从创建到销毁的完整过程，这些回调方法与宿主Activity的生命周期紧密关联，帮助开发者管理UI、资源和状态。以下是Fragment生命周期的详细解析，结合各阶段核心方法及实际应用场景：  ​一、生命周期阶段划分​1. ​创建阶段​ ​onAttach()​  Fragment与宿主Activity建立关联，可通过getActivity()获取Activity实例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文弄懂Fragment的生命周期">
+<meta property="og:url" content="http://yongxinren.github.com/20220719/164500.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="Fragment的生命周期定义了其从创建到销毁的完整过程，这些回调方法与宿主Activity的生命周期紧密关联，帮助开发者管理UI、资源和状态。以下是Fragment生命周期的详细解析，结合各阶段核心方法及实际应用场景：  ​一、生命周期阶段划分​1. ​创建阶段​ ​onAttach()​  Fragment与宿主Activity建立关联，可通过getActivity()获取Activity实例">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-19T08:45:00.000Z">
+<meta property="article:modified_time" content="2025-04-20T11:48:15.439Z">
+<meta property="article:author" content="Yongxinren">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="生命周期">
+<meta property="article:tag" content="Fragment">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/20220719/164500.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>一文弄懂Fragment的生命周期 | 我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20220719/164500.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一文弄懂Fragment的生命周期
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-19 16:45:00" itemprop="dateCreated datePublished" datetime="2022-07-19T16:45:00+08:00">2022-07-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:48:15" itemprop="dateModified" datetime="2025-04-20T19:48:15+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Fragment的生命周期定义了其从创建到销毁的完整过程，这些回调方法与宿主Activity的生命周期紧密关联，帮助开发者管理UI、资源和状态。以下是Fragment生命周期的详细解析，结合各阶段核心方法及实际应用场景：</p>
+<hr>
+<h3 id="​一、生命周期阶段划分​"><a href="#​一、生命周期阶段划分​" class="headerlink" title="​一、生命周期阶段划分​"></a>​<strong>一、生命周期阶段划分</strong>​</h3><h4 id="1-​创建阶段​"><a href="#1-​创建阶段​" class="headerlink" title="1. ​创建阶段​"></a>1. ​<strong>创建阶段</strong>​</h4><ul>
+<li>​<code>onAttach()</code>​<br>  Fragment与宿主Activity建立关联，可通过<code>getActivity()</code>获取Activity实例，适合初始化与Activity的通信接口。</li>
+<li>​<code>onCreate()</code>​<br>  初始化与视图无关的成员变量（如数据加载），可恢复通过<code>Bundle</code>保存的状态。</li>
+<li>​<code>onCreateView()</code>​<br>  创建Fragment的UI布局（需返回<code>View</code>对象），通过<code>LayoutInflater</code>加载XML布局文件。</li>
+<li>​<code>onViewCreated()</code>​<br>  视图创建完成后调用，适合进行控件绑定（如<code>findViewById()</code>）和初始化交互逻辑。</li>
+<li>​<code>onActivityCreated()</code>​<br>  宿主Activity的<code>onCreate()</code>完成后触发，此时可安全操作Activity的其他组件（如Fragment间通信）。</li>
+</ul>
+<h4 id="2-​可见与交互阶段​"><a href="#2-​可见与交互阶段​" class="headerlink" title="2. ​可见与交互阶段​"></a>2. ​<strong>可见与交互阶段</strong>​</h4><ul>
+<li>​<code>onStart()</code>​<br>  Fragment对用户可见（但未获取焦点），可启动动画或注册广播接收器。</li>
+<li>​<code>onResume()</code>​<br>  Fragment进入活动状态，可与用户交互（如启动传感器监听、视频播放）。</li>
+</ul>
+<h4 id="3-​不可见阶段​"><a href="#3-​不可见阶段​" class="headerlink" title="3. ​不可见阶段​"></a>3. ​<strong>不可见阶段</strong>​</h4><ul>
+<li>​<code>onPause()</code>​<br>  Fragment失去焦点但仍部分可见，需暂停耗时操作（如保存表单数据、释放摄像头资源）。</li>
+<li>​<code>onStop()</code>​<br>  Fragment完全不可见，应停止网络请求或动画，避免资源浪费。</li>
+</ul>
+<h4 id="4-​销毁阶段​"><a href="#4-​销毁阶段​" class="headerlink" title="4. ​销毁阶段​"></a>4. ​<strong>销毁阶段</strong>​</h4><ul>
+<li>​<code>onDestroyView()</code>​<br>  视图被移除时调用，需清除视图相关引用（如置空<code>RecyclerView</code>适配器），防止内存泄漏。</li>
+<li>​<code>onDestroy()</code>​<br>  清理非视图资源（如数据库连接、线程池），准备实例销毁。</li>
+<li>​<code>onDetach()</code>​<br>  Fragment与Activity解绑，需释放对Activity的引用（如置空接口监听器）。</li>
+</ul>
+<hr>
+<h3 id="​二、生命周期方法调用顺序​"><a href="#​二、生命周期方法调用顺序​" class="headerlink" title="​二、生命周期方法调用顺序​"></a>​<strong>二、生命周期方法调用顺序</strong>​</h3><p>完整流程如下（以Fragment首次创建为例）：<br><code>onAttach()</code> → <code>onCreate()</code> → <code>onCreateView()</code> → <code>onViewCreated()</code> → <code>onActivityCreated()</code> → <code>onStart()</code> → <code>onResume()</code><br>当Fragment不可见时：<br><code>onPause()</code> → <code>onStop()</code><br>当Fragment被销毁时：<br><code>onDestroyView()</code> → <code>onDestroy()</code> → <code>onDetach()</code></p>
+<hr>
+<h3 id="​三、特殊场景与注意事项​"><a href="#​三、特殊场景与注意事项​" class="headerlink" title="​三、特殊场景与注意事项​"></a>​<strong>三、特殊场景与注意事项</strong>​</h3><ol>
+<li><p>​<strong>配置变更（如屏幕旋转）​</strong>​<br> Fragment会经历完整销毁和重建，需通过<code>onSaveInstanceState()</code>保存临时数据，并在<code>onCreate()</code>或<code>onViewCreated()</code>中恢复。</p>
+</li>
+<li><p>​<strong>Fragment事务管理</strong>​</p>
+<ul>
+<li>  ​<code>add()</code>/<code>replace()</code>​：新Fragment会触发旧Fragment的<code>onPause()</code>至<code>onDestroyView()</code>，但实例可能保留。</li>
+<li>  ​<code>detach()</code>​：仅调用<code>onDestroyView()</code>和<code>onDetach()</code>，实例仍存在。</li>
+</ul>
+</li>
+<li><p>​<strong>状态判断方法</strong>​</p>
+<ul>
+<li>  <code>isAdded()</code>：检查Fragment是否已附加到Activity。</li>
+<li>  <code>isVisible()</code>：判断Fragment是否对用户可见（需视图已创建且未被遮挡）。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="​四、实践建议​"><a href="#​四、实践建议​" class="headerlink" title="​四、实践建议​"></a>​<strong>四、实践建议</strong>​</h3><ul>
+<li>  ​<strong>资源释放</strong>​：在<code>onPause()</code>或<code>onStop()</code>中释放高耗资源（如传感器、动画），避免电量消耗。</li>
+<li>  ​<strong>异步操作管理</strong>​：在<code>onDestroyView()</code>中取消未完成的网络请求，防止内存泄漏。</li>
+<li>  ​<strong>视图与数据分离</strong>​：将数据初始化放在<code>onCreate()</code>，视图操作放在<code>onViewCreated()</code>，确保逻辑清晰。</li>
+</ul>
+<hr>
+<p>通过合理利用生命周期方法，开发者可以实现流畅的界面切换、高效资源管理及稳定状态保存，提升应用性能和用户体验。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" rel="tag"># 生命周期</a>
+              <a href="/tags/Fragment/" rel="tag"># Fragment</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/20220709/164200.html" rel="prev" title="Interger创建对象的详细流程">
+      <i class="fa fa-chevron-left"></i> Interger创建对象的详细流程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/20220902/145800.html" rel="next" title="Android MVVM 架构中的重要概念">
+      Android MVVM 架构中的重要概念 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E4%B8%80%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%98%B6%E6%AE%B5%E5%88%92%E5%88%86%E2%80%8B"><span class="nav-number">1.</span> <span class="nav-text">​一、生命周期阶段划分​</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E2%80%8B%E5%88%9B%E5%BB%BA%E9%98%B6%E6%AE%B5%E2%80%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. ​创建阶段​</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E2%80%8B%E5%8F%AF%E8%A7%81%E4%B8%8E%E4%BA%A4%E4%BA%92%E9%98%B6%E6%AE%B5%E2%80%8B"><span class="nav-number">1.2.</span> <span class="nav-text">2. ​可见与交互阶段​</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E2%80%8B%E4%B8%8D%E5%8F%AF%E8%A7%81%E9%98%B6%E6%AE%B5%E2%80%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. ​不可见阶段​</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E2%80%8B%E9%94%80%E6%AF%81%E9%98%B6%E6%AE%B5%E2%80%8B"><span class="nav-number">1.4.</span> <span class="nav-text">4. ​销毁阶段​</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E4%BA%8C%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F%E2%80%8B"><span class="nav-number">2.</span> <span class="nav-text">​二、生命周期方法调用顺序​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E4%B8%89%E3%80%81%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF%E4%B8%8E%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E2%80%8B"><span class="nav-number">3.</span> <span class="nav-text">​三、特殊场景与注意事项​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E5%9B%9B%E3%80%81%E5%AE%9E%E8%B7%B5%E5%BB%BA%E8%AE%AE%E2%80%8B"><span class="nav-number">4.</span> <span class="nav-text">​四、实践建议​</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Android Jetpack 重要知识点梳理Android Jetpack 是一套库、工具和指南，旨在帮助开发者更轻松地构建出色的 Android 应用。它解决了诸如管理 Activity 生命周期、处理配置更改、后台任务调度等常见问题。掌握 Jetpack 的核心组件对于现代 Android 开发至关重要。以下是 Jetpack 中一些最重要知识点的梳理，按其在现代开发中的重要性和普遍性排序：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Jetpack 重要知识点梳理">
+<meta property="og:url" content="http://yongxinren.github.com/20240213/093200.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="Android Jetpack 重要知识点梳理Android Jetpack 是一套库、工具和指南，旨在帮助开发者更轻松地构建出色的 Android 应用。它解决了诸如管理 Activity 生命周期、处理配置更改、后台任务调度等常见问题。掌握 Jetpack 的核心组件对于现代 Android 开发至关重要。以下是 Jetpack 中一些最重要知识点的梳理，按其在现代开发中的重要性和普遍性排序：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-13T01:32:00.000Z">
+<meta property="article:modified_time" content="2025-04-20T11:46:43.429Z">
+<meta property="article:author" content="Yongxinren">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Jetpack">
+<meta property="article:tag" content="架构组件">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/20240213/093200.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android Jetpack 重要知识点梳理 | 我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20240213/093200.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android Jetpack 重要知识点梳理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-13 09:32:00" itemprop="dateCreated datePublished" datetime="2024-02-13T09:32:00+08:00">2024-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:43" itemprop="dateModified" datetime="2025-04-20T19:46:43+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Android-Jetpack-重要知识点梳理"><a href="#Android-Jetpack-重要知识点梳理" class="headerlink" title="Android Jetpack 重要知识点梳理"></a>Android Jetpack 重要知识点梳理</h1><p>Android Jetpack 是一套库、工具和指南，旨在帮助开发者更轻松地构建出色的 Android 应用。它解决了诸如管理 Activity 生命周期、处理配置更改、后台任务调度等常见问题。掌握 Jetpack 的核心组件对于现代 Android 开发至关重要。以下是 Jetpack 中一些最重要知识点的梳理，按其在现代开发中的重要性和普遍性排序：</p>
+<h2 id="1-Lifecycle-生命周期"><a href="#1-Lifecycle-生命周期" class="headerlink" title="1. Lifecycle (生命周期)"></a>1. Lifecycle (生命周期)</h2><p><strong>核心概念:</strong> <code>Lifecycle</code> 组件是 Jetpack 架构组件的基础，它允许其他组件（如 <code>ViewModel</code> 和 <code>LiveData</code>）感知并响应 Activity 或 Fragment 的生命周期状态变化。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>避免内存泄漏:</strong> 组件可以在宿主生命周期结束时自动清理资源。</li>
+<li>  <strong>防止崩溃:</strong> 避免在 Activity/Fragment 停止后执行 UI 更新或其他操作。</li>
+<li>  <strong>简化代码:</strong> 将生命周期管理逻辑从 Activity/Fragment 中解耦出来。</li>
+<li>  <strong>是 ViewModel 和 LiveData/Flow 的基础。</strong></li>
+</ul>
+<h2 id="2-ViewModel-视图模型"><a href="#2-ViewModel-视图模型" class="headerlink" title="2. ViewModel (视图模型)"></a>2. ViewModel (视图模型)</h2><p><strong>核心概念:</strong> <code>ViewModel</code> 用于存储和管理与 UI 相关的数据，并能在配置更改（如屏幕旋转）后存活下来。它遵循关注点分离原则，将数据处理逻辑与 UI 控制器（Activity/Fragment）分开。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>数据持久性:</strong> 在配置更改期间保持 UI 状态，提升用户体验。</li>
+<li>  <strong>关注点分离:</strong> 使 Activity/Fragment 专注于 UI 绘制和用户交互，ViewModel 负责准备数据。</li>
+<li>  <strong>生命周期感知:</strong> 通常与 <code>Lifecycle</code> 结合使用，其生命周期比创建它的 Activity/Fragment 更长。</li>
+<li>  <strong>易于测试:</strong> ViewModel 不包含对 Android UI 或 Framework 的直接引用，方便进行单元测试。</li>
+</ul>
+<h2 id="3-LiveData-Kotlin-Flow-StateFlow-SharedFlow"><a href="#3-LiveData-Kotlin-Flow-StateFlow-SharedFlow" class="headerlink" title="3. LiveData / Kotlin Flow (StateFlow, SharedFlow)"></a>3. LiveData / Kotlin Flow (StateFlow, SharedFlow)</h2><p><strong>核心概念:</strong></p>
+<ul>
+<li>  <strong>LiveData:</strong> 一个具有生命周期感知能力的可观察数据持有者类。它只会在关联的 <code>LifecycleOwner</code> (如 Activity/Fragment) 处于活跃状态（STARTED 或 RESUMED）时通知观察者。</li>
+<li>  <strong>Kotlin Flow:</strong> 来自 Kotlin 协程库的冷异步数据流。<code>StateFlow</code> 和 <code>SharedFlow</code> 是其热流变体，特别适用于在 ViewModel 中向 UI 暴露状态。Flow 提供了更丰富的操作符和更灵活的线程控制。</li>
+</ul>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>响应式编程:</strong> 构建数据驱动的 UI，当底层数据变化时自动更新 UI。</li>
+<li>  <strong>生命周期安全 (LiveData):</strong> 自动管理订阅，避免内存泄漏和空指针异常。</li>
+<li>  <strong>与协程集成 (Flow):</strong> 充分利用 Kotlin 协程进行异步操作和数据转换。</li>
+<li>  <strong>现代 Android 开发趋势:</strong> Google 推荐在新的开发中使用 Flow，尤其是在 ViewModel 层。</li>
+</ul>
+<h2 id="4-Jetpack-Compose-声明式-UI"><a href="#4-Jetpack-Compose-声明式-UI" class="headerlink" title="4. Jetpack Compose (声明式 UI)"></a>4. Jetpack Compose (声明式 UI)</h2><p><strong>核心概念:</strong> Jetpack Compose 是 Android 的现代原生 UI 工具包，采用声明式编程范式。开发者只需描述 UI 的外观和状态，Compose 负责在状态变化时高效地更新 UI。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>开发效率:</strong> 代码更少，更直观，加速 UI 开发。</li>
+<li>  <strong>强大的工具:</strong> 内置 Material Design、动画、主题等支持。</li>
+<li>  <strong>Kotlin 优先:</strong> 完全基于 Kotlin 构建，利用其语言特性。</li>
+<li>  <strong>互操作性:</strong> 可以与现有的基于 View 的 UI 混合使用。</li>
+<li>  <strong>未来趋势:</strong> Google 大力推广，是 Android UI 开发的未来方向。</li>
+</ul>
+<h2 id="5-Navigation-导航"><a href="#5-Navigation-导航" class="headerlink" title="5. Navigation (导航)"></a>5. Navigation (导航)</h2><p><strong>核心概念:</strong> <code>Navigation</code> 组件简化了 Android 应用内导航的实现。它提供了一个可视化的导航图编辑器，以及用于处理 Fragment 事务、参数传递、深层链接 (Deep Link) 和动画的 API。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>标准化导航:</strong> 提供一致的应用内导航体验。</li>
+<li>  <strong>简化 Fragment 管理:</strong> 自动处理 Fragment 的添加、替换和返回栈。</li>
+<li>  <strong>类型安全的参数传递:</strong> 使用 Safe Args 插件在目的地之间安全地传递数据。</li>
+<li>  <strong>可视化:</strong> 导航图直观展示应用流程。</li>
+<li>  <strong>处理深层链接:</strong> 轻松实现通过 URL 跳转到应用特定页面的功能。</li>
+</ul>
+<h2 id="6-Room-数据库"><a href="#6-Room-数据库" class="headerlink" title="6. Room (数据库)"></a>6. Room (数据库)</h2><p><strong>核心概念:</strong> <code>Room</code> 是一个基于 SQLite 的对象关系映射 (ORM) 库。它在 SQLite 的基础上提供了一个抽象层，允许更健壮、更方便的数据库访问。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>简化数据库操作:</strong> 使用注解自动生成模板代码，减少手动编写 SQL 的工作量。</li>
+<li>  <strong>编译时 SQL 校验:</strong> 在编译期间检查 SQL 查询语句的正确性。</li>
+<li>  <strong>与 LiveData/Flow 集成:</strong> 可以方便地观察数据库变化并更新 UI。</li>
+<li>  <strong>数据库迁移:</strong> 提供简化的数据库版本迁移方案。</li>
+</ul>
+<h2 id="7-RecyclerView-列表视图"><a href="#7-RecyclerView-列表视图" class="headerlink" title="7. RecyclerView (列表视图)"></a>7. RecyclerView (列表视图)</h2><p><strong>核心概念:</strong> <code>RecyclerView</code> 是一个用于高效显示大型数据集列表的 UI 组件。它通过复用视图 (ViewHolder 模式) 来优化性能和内存使用。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>性能优化:</strong> 高效处理大量数据，避免卡顿和内存溢出。</li>
+<li>  <strong>灵活性:</strong> 支持不同的布局管理器（线性、网格、瀑布流）和自定义项动画。</li>
+<li>  <strong>ViewHolder 模式:</strong> 强制使用 ViewHolder，减少 <code>findViewById</code> 的调用。</li>
+<li>  <strong>DiffUtil:</strong> 配合 <code>ListAdapter</code> 可以高效地计算列表差异并更新 UI，提供流畅的动画效果。</li>
+</ul>
+<h2 id="8-ConstraintLayout-约束布局"><a href="#8-ConstraintLayout-约束布局" class="headerlink" title="8. ConstraintLayout (约束布局)"></a>8. ConstraintLayout (约束布局)</h2><p><strong>核心概念:</strong> <code>ConstraintLayout</code> 是一个强大而灵活的布局管理器，允许开发者通过设置视图之间的约束关系来创建复杂而扁平的视图层级。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>扁平化视图层级:</strong> 减少嵌套，提高布局性能。</li>
+<li>  <strong>灵活性:</strong> 轻松创建相对定位、比例尺寸、链、辅助线等复杂布局。</li>
+<li>  <strong>可视化编辑器:</strong> Android Studio 提供强大的可视化编辑器支持。</li>
+<li>  <strong>响应式布局:</strong> 能够更好地适应不同屏幕尺寸和方向。</li>
+</ul>
+<h2 id="9-WorkManager-后台任务"><a href="#9-WorkManager-后台任务" class="headerlink" title="9. WorkManager (后台任务)"></a>9. WorkManager (后台任务)</h2><p><strong>核心概念:</strong> <code>WorkManager</code> 用于处理需要保证执行的、可延迟的后台任务。即使应用退出或设备重启，WorkManager 也能确保任务最终被执行。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>可靠性:</strong> 保证任务执行，适用于数据同步、日志上传等场景。</li>
+<li>  <strong>兼容性:</strong> 在不同的 Android 版本上选择合适的底层实现（如 <code>JobScheduler</code> 或 <code>AlarmManager</code>）。</li>
+<li>  <strong>任务约束:</strong> 可以为任务设置执行条件（如网络连接、设备充电状态）。</li>
+<li>  <strong>任务链:</strong> 支持按顺序或并行执行一系列任务。</li>
+<li>  <strong>系统优化:</strong> 遵守系统的 Doze 模式和应用待机模式，优化电池消耗。</li>
+</ul>
+<h2 id="10-Paging-3-分页加载"><a href="#10-Paging-3-分页加载" class="headerlink" title="10. Paging 3 (分页加载)"></a>10. Paging 3 (分页加载)</h2><p><strong>核心概念:</strong> <code>Paging 3</code> 库帮助开发者轻松地从本地存储或网络逐步加载和显示大型数据集。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>优化资源消耗:</strong> 按需加载数据，减少网络带宽和设备内存占用。</li>
+<li>  <strong>提升用户体验:</strong> 快速显示首屏数据，滚动时平滑加载更多内容。</li>
+<li>  <strong>与 RecyclerView 集成:</strong> 提供 <code>PagingDataAdapter</code> 简化与 RecyclerView 的集成。</li>
+<li>  <strong>支持数据源多样性:</strong> 可以从数据库 (Room)、网络或自定义数据源加载数据。</li>
+<li>  <strong>内置错误处理和刷新机制。</strong></li>
+</ul>
+<h2 id="11-Data-Binding-View-Binding-视图绑定"><a href="#11-Data-Binding-View-Binding-视图绑定" class="headerlink" title="11. Data Binding / View Binding (视图绑定)"></a>11. Data Binding / View Binding (视图绑定)</h2><p><strong>核心概念:</strong></p>
+<ul>
+<li>  <strong>View Binding:</strong> 生成一个绑定类，直接引用布局文件中的视图，替代 <code>findViewById</code>。类型安全，编译时检查。</li>
+<li>  <strong>Data Binding:</strong> 功能更强大，允许在布局文件中编写简单的逻辑表达式，将数据直接绑定到视图属性上，并支持双向绑定。</li>
+</ul>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>消除 <code>findViewById</code>:</strong> 代码更简洁、安全（避免空指针）。</li>
+<li>  <strong>类型安全:</strong> 在编译时捕获视图 ID 错误。</li>
+<li>  <strong>简化 UI 更新 (Data Binding):</strong> 减少在 Activity/Fragment 中手动设置视图属性的代码。</li>
+<li>  <strong>提高开发效率。</strong> (View Binding 编译更快，更推荐用于仅替代 <code>findViewById</code> 的场景)</li>
+</ul>
+<h2 id="12-Hilt-Dagger-依赖注入"><a href="#12-Hilt-Dagger-依赖注入" class="headerlink" title="12. Hilt / Dagger (依赖注入)"></a>12. Hilt / Dagger (依赖注入)</h2><p><strong>核心概念:</strong> Hilt 是基于 Dagger 构建的、专门为 Android 设计的依赖注入库。它简化了 Dagger 在 Android 应用中的使用，通过注解自动生成样板代码。</p>
+<p><strong>重要性:</strong></p>
+<ul>
+<li>  <strong>简化依赖注入:</strong> 减少手动创建和管理对象依赖的复杂性。</li>
+<li>  <strong>提高可测试性:</strong> 方便替换依赖项进行单元测试和集成测试。</li>
+<li>  <strong>标准化:</strong> 提供标准的 Android 类注入方式（如 Activity, Fragment, ViewModel）。</li>
+<li>  <strong>与 Jetpack 集成:</strong> 能够轻松地将 ViewModel、WorkManager 等 Jetpack 组件集成到依赖注入图中。</li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Android Jetpack 极大地改善了 Android 开发体验，提供了一系列高质量、一致且易于使用的库来解决常见问题。熟练掌握上述核心组件，特别是架构组件和 Compose，将使你能够构建更健壮、可维护且用户体验更佳的现代 Android 应用。建议持续关注 Jetpack 的更新和新组件的发布。 </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Jetpack/" rel="tag"># Jetpack</a>
+              <a href="/tags/%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6/" rel="tag"># 架构组件</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/20231105/111500.html" rel="prev" title="一文了解 Android MVI 架构">
+      <i class="fa fa-chevron-left"></i> 一文了解 Android MVI 架构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/20240418/152100.html" rel="next" title="Android Jetpack 面试题">
+      Android Jetpack 面试题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-Jetpack-%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Android Jetpack 重要知识点梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Lifecycle-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1. Lifecycle (生命周期)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ViewModel-%E8%A7%86%E5%9B%BE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">2. ViewModel (视图模型)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-LiveData-Kotlin-Flow-StateFlow-SharedFlow"><span class="nav-number">1.3.</span> <span class="nav-text">3. LiveData &#x2F; Kotlin Flow (StateFlow, SharedFlow)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Jetpack-Compose-%E5%A3%B0%E6%98%8E%E5%BC%8F-UI"><span class="nav-number">1.4.</span> <span class="nav-text">4. Jetpack Compose (声明式 UI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Navigation-%E5%AF%BC%E8%88%AA"><span class="nav-number">1.5.</span> <span class="nav-text">5. Navigation (导航)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Room-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">6. Room (数据库)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-RecyclerView-%E5%88%97%E8%A1%A8%E8%A7%86%E5%9B%BE"><span class="nav-number">1.7.</span> <span class="nav-text">7. RecyclerView (列表视图)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-ConstraintLayout-%E7%BA%A6%E6%9D%9F%E5%B8%83%E5%B1%80"><span class="nav-number">1.8.</span> <span class="nav-text">8. ConstraintLayout (约束布局)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-WorkManager-%E5%90%8E%E5%8F%B0%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.9.</span> <span class="nav-text">9. WorkManager (后台任务)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Paging-3-%E5%88%86%E9%A1%B5%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.10.</span> <span class="nav-text">10. Paging 3 (分页加载)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Data-Binding-View-Binding-%E8%A7%86%E5%9B%BE%E7%BB%91%E5%AE%9A"><span class="nav-number">1.11.</span> <span class="nav-text">11. Data Binding &#x2F; View Binding (视图绑定)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Hilt-Dagger-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">1.12.</span> <span class="nav-text">12. Hilt &#x2F; Dagger (依赖注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">1.13.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

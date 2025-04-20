@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="repeatOnLifecycle 是 Android Jetpack 生命周期组件库中的一个实用扩展函数，主要用于在 LifecycleOwner（如 Activity 或 Fragment）的生命周期状态变化时自动启动和取消协程任务。它结合了 Kotlin 协程和生命周期感知能力，帮助开发者避免内存泄漏和无效的资源消耗。  ​核心功能​ ​自动启停协程​ 当 Lifecycle 进入或退出指定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文弄懂 repeatOnLifecycle">
+<meta property="og:url" content="http://yongxinren.github.com/20241011/085600.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="repeatOnLifecycle 是 Android Jetpack 生命周期组件库中的一个实用扩展函数，主要用于在 LifecycleOwner（如 Activity 或 Fragment）的生命周期状态变化时自动启动和取消协程任务。它结合了 Kotlin 协程和生命周期感知能力，帮助开发者避免内存泄漏和无效的资源消耗。  ​核心功能​ ​自动启停协程​ 当 Lifecycle 进入或退出指定">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-11T00:56:00.000Z">
+<meta property="article:modified_time" content="2025-04-20T11:46:31.115Z">
+<meta property="article:author" content="Yongxinren">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Jetpack">
+<meta property="article:tag" content="Kotlin">
+<meta property="article:tag" content="协程">
+<meta property="article:tag" content="生命周期">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/20241011/085600.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>一文弄懂 repeatOnLifecycle | 我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20241011/085600.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一文弄懂 repeatOnLifecycle
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-10-11 08:56:00" itemprop="dateCreated datePublished" datetime="2024-10-11T08:56:00+08:00">2024-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:31" itemprop="dateModified" datetime="2025-04-20T19:46:31+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><code>repeatOnLifecycle</code> 是 Android Jetpack 生命周期组件库中的一个实用扩展函数，主要用于在 <code>LifecycleOwner</code>（如 <code>Activity</code> 或 <code>Fragment</code>）的生命周期状态变化时自动启动和取消协程任务。它结合了 Kotlin 协程和生命周期感知能力，帮助开发者避免内存泄漏和无效的资源消耗。</p>
+<hr>
+<h3 id="​核心功能​"><a href="#​核心功能​" class="headerlink" title="​核心功能​"></a>​<strong>核心功能</strong>​</h3><ol>
+<li>​<strong>自动启停协程</strong>​<br> 当 <code>Lifecycle</code> 进入或退出指定状态（如 <code>STARTED</code> 或 <code>RESUMED</code>）时，自动启动或取消协程块内的任务。</li>
+<li>​<strong>避免内存泄漏</strong>​<br> 协程会在 <code>Lifecycle</code> 销毁时自动取消，无需手动管理。</li>
+<li>​<strong>简化代码</strong>​<br> 替代传统的 <code>lifecycle.addObserver</code> 手动监听，减少模板代码。</li>
+</ol>
+<hr>
+<h3 id="​使用场景​"><a href="#​使用场景​" class="headerlink" title="​使用场景​"></a>​<strong>使用场景</strong>​</h3><ul>
+<li>  在 <code>Activity/Fragment</code> 可见时（<code>STARTED</code>）开始数据加载，不可见时停止。</li>
+<li>  替代 <code>LiveData</code> 的协程版本（如结合 <code>Flow</code> 使用）。</li>
+</ul>
+<hr>
+<h3 id="​基本用法​"><a href="#​基本用法​" class="headerlink" title="​基本用法​"></a>​<strong>基本用法</strong>​</h3><h4 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h4><p>确保项目中已引入 <code>lifecycle-runtime-ktx</code>：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&quot;androidx.lifecycle:lifecycle-runtime-ktx:2.6.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2. 示例代码"></a>2. 示例代码</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        </span><br><span class="line">        lifecycleScope.launch &#123;</span><br><span class="line">            repeatOnLifecycle(Lifecycle.State.STARTED) &#123;</span><br><span class="line">                <span class="comment">// 当 Activity 进入 STARTED 状态时启动协程</span></span><br><span class="line">                someFlow.collect &#123; <span class="keyword">data</span> -&gt;</span><br><span class="line">                    updateUI(<span class="keyword">data</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 当 Activity 进入 STOPPED 状态时自动取消协程</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="​关键参数​"><a href="#​关键参数​" class="headerlink" title="​关键参数​"></a>​<strong>关键参数</strong>​</h3><ul>
+<li><p>​<code>state</code>​<br>  指定触发协程的生命周期状态（通常为 <code>STARTED</code> 或 <code>RESUMED</code>）：</p>
+<ul>
+<li>  <code>STARTED</code>：界面可见但可能未获取焦点（适合大多数场景）。</li>
+<li>  <code>RESUMED</code>：界面完全可见且可交互（需要严格实时性的场景）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="​与-launchWhenX-的区别​"><a href="#​与-launchWhenX-的区别​" class="headerlink" title="​与 launchWhenX 的区别​"></a>​<strong>与 <code>launchWhenX</code> 的区别</strong>​</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>repeatOnLifecycle</code></th>
+<th><code>launchWhenStarted</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>​<strong>协程取消时机</strong>​</td>
+<td>生命周期离开指定状态时取消</td>
+<td>仅在生命周期销毁时取消</td>
+</tr>
+<tr>
+<td>​<strong>资源效率</strong>​</td>
+<td>更高（及时取消）</td>
+<td>较低（可能后台运行）</td>
+</tr>
+<tr>
+<td>​<strong>推荐场景</strong>​</td>
+<td>数据流（如 <code>Flow</code>）收集</td>
+<td>简单的一次性任务</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>​<strong>官方推荐</strong>​：对于 <code>Flow</code> 收集，优先使用 <code>repeatOnLifecycle</code>。</p>
+</blockquote>
+<hr>
+<h3 id="​结合-Flow-使用​"><a href="#​结合-Flow-使用​" class="headerlink" title="​结合 Flow 使用​"></a>​<strong>结合 Flow 使用</strong>​</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lifecycleScope.launch &#123;</span><br><span class="line">    repeatOnLifecycle(Lifecycle.State.STARTED) &#123;</span><br><span class="line">        viewModel.dataFlow</span><br><span class="line">            .<span class="keyword">catch</span> &#123; <span class="comment">/* 异常处理 */</span> &#125;</span><br><span class="line">            .collect &#123; <span class="keyword">data</span> -&gt; updateUI(<span class="keyword">data</span>) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="​注意事项​"><a href="#​注意事项​" class="headerlink" title="​注意事项​"></a>​<strong>注意事项</strong>​</h3><ol>
+<li>​<strong>协程作用域</strong>​<br> 需在 <code>lifecycleScope</code> 或 <code>viewModelScope</code> 中调用，确保协程与生命周期绑定。</li>
+<li>​<strong>状态选择</strong>​<br> 根据需求选择 <code>STARTED</code> 或 <code>RESUMED</code>，避免过度频繁启停。</li>
+<li>​<strong>替代方案</strong>​<br> 对于 <code>Compose</code>，可使用 <code>collectAsStateWithLifecycle</code>。</li>
+</ol>
+<hr>
+<p>通过 <code>repeatOnLifecycle</code>，开发者可以更安全、高效地管理协程任务的生命周期，尤其适合需要响应式数据更新的场景。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Jetpack/" rel="tag"># Jetpack</a>
+              <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+              <a href="/tags/%E5%8D%8F%E7%A8%8B/" rel="tag"># 协程</a>
+              <a href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" rel="tag"># 生命周期</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/20240823/170800.html" rel="prev" title="Jetpack Compose 中绘制自定义图形">
+      <i class="fa fa-chevron-left"></i> Jetpack Compose 中绘制自定义图形
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/20241219/142700.html" rel="next" title="remember 原理与使用指南">
+      remember 原理与使用指南 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E2%80%8B"><span class="nav-number">1.</span> <span class="nav-text">​核心功能​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E2%80%8B"><span class="nav-number">2.</span> <span class="nav-text">​使用场景​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E2%80%8B"><span class="nav-number">3.</span> <span class="nav-text">​基本用法​</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="nav-number">3.1.</span> <span class="nav-text">1. 添加依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">3.2.</span> <span class="nav-text">2. 示例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E2%80%8B"><span class="nav-number">4.</span> <span class="nav-text">​关键参数​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E4%B8%8E-launchWhenX-%E7%9A%84%E5%8C%BA%E5%88%AB%E2%80%8B"><span class="nav-number">5.</span> <span class="nav-text">​与 launchWhenX 的区别​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E7%BB%93%E5%90%88-Flow-%E4%BD%BF%E7%94%A8%E2%80%8B"><span class="nav-number">6.</span> <span class="nav-text">​结合 Flow 使用​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E2%80%8B"><span class="nav-number">7.</span> <span class="nav-text">​注意事项​</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

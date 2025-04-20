@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yongxinren.github.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="以下面试题覆盖了Jetpack核心组件的原理、优化及实际应用场景，适合中高级Android开发者面试准备。  1. ​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​Navigation组件通过导航图可视化管理Fragment跳转，优势包括：    类型安全的参数传递（SafeArgs插件） 自动处理返回栈，避免传统FragmentTransaction的混乱。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Jetpack 面试题">
+<meta property="og:url" content="http://yongxinren.github.com/20240418/152100.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="以下面试题覆盖了Jetpack核心组件的原理、优化及实际应用场景，适合中高级Android开发者面试准备。  1. ​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​Navigation组件通过导航图可视化管理Fragment跳转，优势包括：    类型安全的参数传递（SafeArgs插件） 自动处理返回栈，避免传统FragmentTransaction的混乱。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-18T07:21:00.000Z">
+<meta property="article:modified_time" content="2025-04-20T11:46:18.196Z">
+<meta property="article:author" content="Yongxinren">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Jetpack">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="ViewModel">
+<meta property="article:tag" content="LiveData">
+<meta property="article:tag" content="Room">
+<meta property="article:tag" content="Navigation">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yongxinren.github.com/20240418/152100.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android Jetpack 面试题 | 我的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">我的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">对生活充满热情，对未来充满信心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yongxinren.github.com/20240418/152100.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yongxinren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android Jetpack 面试题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-18 15:21:00" itemprop="dateCreated datePublished" datetime="2024-04-18T15:21:00+08:00">2024-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-20 19:46:18" itemprop="dateModified" datetime="2025-04-20T19:46:18+08:00">2025-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>以下面试题覆盖了Jetpack核心组件的原理、优化及实际应用场景，适合中高级Android开发者面试准备。</p>
+<hr>
+<h3 id="1-​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​"><a href="#1-​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​" class="headerlink" title="1. ​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​"></a>1. ​<strong>Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​</strong>​</h3><p>Navigation组件通过<strong>导航图</strong>可视化管理Fragment跳转，优势包括：</p>
+<ul>
+<li>  类型安全的参数传递（SafeArgs插件）</li>
+<li>自动处理返回栈，避免传统<code>FragmentTransaction</code>的混乱。<br>  ​<strong>解决页面重叠</strong>​：确保转场动画使用<code>setEnterAnimations</code>，并通过<code>NavController.clearBackStack()</code>清理无效栈。</li>
+</ul>
+<hr>
+<h3 id="2-​ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​​"><a href="#2-​ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​​" class="headerlink" title="2. ​ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​​"></a>2. ​<strong>ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​</strong>​</h3><p>ViewModel通过<code>ViewModelStore</code>（由<code>HolderFragment</code>持有）在Activity重建时保留数据。源码中：</p>
+<ul>
+<li>  <code>Activity#onRetainNonConfigurationInstance()</code>保存<code>ViewModelStore</code></li>
+<li>  <code>HolderFragment</code>通过<code>getViewModelStore()</code>恢复数据。</li>
+</ul>
+<hr>
+<h3 id="3-​LiveData的”粘性事件”是什么？如何避免？​​"><a href="#3-​LiveData的”粘性事件”是什么？如何避免？​​" class="headerlink" title="3. ​LiveData的”粘性事件”是什么？如何避免？​​"></a>3. ​<strong>LiveData的”粘性事件”是什么？如何避免？​</strong>​</h3><p>粘性事件指新Observer注册时收到最后一次数据（<code>mVersion</code>计数触发）。解决方案：</p>
+<ul>
+<li>  使用<code>SingleLiveEvent</code>封装，通过<code>AtomicBoolean</code>标记消费状态。</li>
+<li>  或改用Kotlin Flow替代。</li>
+</ul>
+<hr>
+<h3 id="4-​Room数据库如何优化多表查询性能？​​"><a href="#4-​Room数据库如何优化多表查询性能？​​" class="headerlink" title="4. ​Room数据库如何优化多表查询性能？​​"></a>4. ​<strong>Room数据库如何优化多表查询性能？​</strong>​</h3><ul>
+<li>  使用<code>@Transaction</code>包裹多表操作，避免数据不一致。</li>
+<li>  异步查询：返回<code>Flow&lt;List&lt;T&gt;&gt;</code>或<code>suspend</code>函数（协程）。</li>
+<li>  索引优化：对高频查询字段添加<code>@Index</code>。</li>
+</ul>
+<hr>
+<h3 id="5-​WorkManager与JobScheduler-AlarmManager的区别？如何实现任务链？​​"><a href="#5-​WorkManager与JobScheduler-AlarmManager的区别？如何实现任务链？​​" class="headerlink" title="5. ​WorkManager与JobScheduler/AlarmManager的区别？如何实现任务链？​​"></a>5. ​<strong>WorkManager与JobScheduler/AlarmManager的区别？如何实现任务链？​</strong>​</h3><ul>
+<li><p>  ​<strong>区别</strong>​：WorkManager兼容API 14+，内部按系统版本选择<code>JobScheduler</code>或<code>AlarmManager</code>，支持约束条件（如网络状态）。</p>
+</li>
+<li><p>​<strong>任务链</strong>​：通过<code>WorkContinuation</code>串联<code>OneTimeWorkRequest</code>，例如：</p>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance()</span><br><span class="line">  .beginWith(workA)</span><br><span class="line">  .then(workB)</span><br><span class="line">  .enqueue()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="6-​DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​​"><a href="#6-​DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​​" class="headerlink" title="6. ​DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​​"></a>6. ​<strong>DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​</strong>​</h3><ul>
+<li><p>  ​<strong>内存泄漏</strong>​：在<code>onDestroy</code>中调用<code>binding.unbind()</code>。</p>
+</li>
+<li><p>​<strong>表达式优化</strong>​：</p>
+<ul>
+<li>  使用<code>@BindingAdapter</code>替换复杂逻辑（如<code>Glide</code>加载图片）</li>
+<li>  避免在XML中写计算逻辑，改用静态方法。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="7-​Paging-3-0如何实现预加载？与RecyclerView如何配合？​​"><a href="#7-​Paging-3-0如何实现预加载？与RecyclerView如何配合？​​" class="headerlink" title="7. ​Paging 3.0如何实现预加载？与RecyclerView如何配合？​​"></a>7. ​<strong>Paging 3.0如何实现预加载？与RecyclerView如何配合？​</strong>​</h3><ul>
+<li>  ​<strong>预加载</strong>​：通过<code>PagingConfig</code>设置<code>prefetchDistance</code>（如提前加载20项）。</li>
+<li>  ​<strong>配合RecyclerView</strong>​：使用<code>PagingDataAdapter</code>，内部自动处理分页和DiffUtil。</li>
+</ul>
+<hr>
+<h3 id="8-​Hilt依赖注入相比Dagger2有哪些简化？​​"><a href="#8-​Hilt依赖注入相比Dagger2有哪些简化？​​" class="headerlink" title="8. ​Hilt依赖注入相比Dagger2有哪些简化？​​"></a>8. ​<strong>Hilt依赖注入相比Dagger2有哪些简化？​</strong>​</h3><ul>
+<li>  自动生成组件（如<code>@AndroidEntryPoint</code>替代<code>@Component</code>）</li>
+<li>  内置ViewModel注入：<code>@HiltViewModel</code></li>
+<li>  减少模板代码：无需手动编写<code>Module</code>和<code>Component</code>。</li>
+</ul>
+<hr>
+<h3 id="9-​Compose重组优化的四大法则是什么？​​"><a href="#9-​Compose重组优化的四大法则是什么？​​" class="headerlink" title="9. ​Compose重组优化的四大法则是什么？​​"></a>9. ​<strong>Compose重组优化的四大法则是什么？​</strong>​</h3><ol>
+<li> ​<strong>层级扁平化</strong>​：减少嵌套布局的<code>Modifier</code>链（每层增加0.8ms测量耗时）</li>
+<li> ​<strong>状态隔离</strong>​：用<code>@Stable</code>标记不可变数据类</li>
+<li> ​<strong>延迟加载</strong>​：<code>LazyLayout</code>预加载机制</li>
+<li> ​<strong>智能缓存</strong>​：<code>rememberSaveable</code>保存状态。</li>
+</ol>
+<hr>
+<h3 id="10-​如何设计跨进程的LiveData事件总线？​​"><a href="#10-​如何设计跨进程的LiveData事件总线？​​" class="headerlink" title="10. ​如何设计跨进程的LiveData事件总线？​​"></a>10. ​<strong>如何设计跨进程的LiveData事件总线？​</strong>​</h3><p>结合<code>MMKV</code>或<code>ContentProvider</code>实现跨进程通信：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProcessAwareLiveData</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> mmkv: MMKV) : LiveData&lt;T&gt;() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActive</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mmkv.registerOnSharedPreferenceChangeListener &#123; _, key -&gt; </span><br><span class="line">            postValue(mmkv.decode(key)) </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：需处理多进程写入的线程同步问题（如分段锁）。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Jetpack/" rel="tag"># Jetpack</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># 面试题</a>
+              <a href="/tags/ViewModel/" rel="tag"># ViewModel</a>
+              <a href="/tags/LiveData/" rel="tag"># LiveData</a>
+              <a href="/tags/Room/" rel="tag"># Room</a>
+              <a href="/tags/Navigation/" rel="tag"># Navigation</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/20240213/093200.html" rel="prev" title="Android Jetpack 重要知识点梳理">
+      <i class="fa fa-chevron-left"></i> Android Jetpack 重要知识点梳理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/20240607/114500.html" rel="next" title="Android WorkManager 简介">
+      Android WorkManager 简介 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E2%80%8BNavigation%E7%BB%84%E4%BB%B6%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Fragment%E9%A1%B5%E9%9D%A2%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">1.</span> <span class="nav-text">1. ​Navigation组件的核心优势是什么？如何解决Fragment页面重叠问题？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E2%80%8BViewModel%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%9B%B4%E6%94%B9%E5%90%8E%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%A2%E5%A4%B1%EF%BC%9F%E6%BA%90%E7%A0%81%E5%B1%82%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">2.</span> <span class="nav-text">2. ​ViewModel如何实现配置更改后数据不丢失？源码层如何设计？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E2%80%8BLiveData%E7%9A%84%E2%80%9D%E7%B2%98%E6%80%A7%E4%BA%8B%E4%BB%B6%E2%80%9D%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">3.</span> <span class="nav-text">3. ​LiveData的”粘性事件”是什么？如何避免？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E2%80%8BRoom%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">4.</span> <span class="nav-text">4. ​Room数据库如何优化多表查询性能？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E2%80%8BWorkManager%E4%B8%8EJobScheduler-AlarmManager%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%BB%BB%E5%8A%A1%E9%93%BE%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">5.</span> <span class="nav-text">5. ​WorkManager与JobScheduler&#x2F;AlarmManager的区别？如何实现任务链？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E2%80%8BDataBinding%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%EF%BC%9F%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BC%98%E5%8C%96%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8A%80%E5%B7%A7%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">6.</span> <span class="nav-text">6. ​DataBinding如何避免内存泄漏？表达式优化有哪些技巧？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E2%80%8BPaging-3-0%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%A2%84%E5%8A%A0%E8%BD%BD%EF%BC%9F%E4%B8%8ERecyclerView%E5%A6%82%E4%BD%95%E9%85%8D%E5%90%88%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">7.</span> <span class="nav-text">7. ​Paging 3.0如何实现预加载？与RecyclerView如何配合？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E2%80%8BHilt%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9B%B8%E6%AF%94Dagger2%E6%9C%89%E5%93%AA%E4%BA%9B%E7%AE%80%E5%8C%96%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">8.</span> <span class="nav-text">8. ​Hilt依赖注入相比Dagger2有哪些简化？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E2%80%8BCompose%E9%87%8D%E7%BB%84%E4%BC%98%E5%8C%96%E7%9A%84%E5%9B%9B%E5%A4%A7%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">9.</span> <span class="nav-text">9. ​Compose重组优化的四大法则是什么？​​</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E2%80%8B%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E8%B7%A8%E8%BF%9B%E7%A8%8B%E7%9A%84LiveData%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF%EF%BC%9F%E2%80%8B%E2%80%8B"><span class="nav-number">10.</span> <span class="nav-text">10. ​如何设计跨进程的LiveData事件总线？​​</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yongxinren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yongxinren</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
